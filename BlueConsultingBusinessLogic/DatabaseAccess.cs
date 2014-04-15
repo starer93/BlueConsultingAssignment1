@@ -127,6 +127,36 @@ namespace BlueConsultingBusinessLogic
             return dt;
         }
 
+        public string getDepartmentName(string username)
+        {
+            var connection = new SqlConnection(connectionString);
+            var selectCommand = new SqlCommand("Select DepartmentName From aspnet_Users where UserName = @username", connection);
+            var adapter = new SqlDataAdapter(selectCommand);
+            selectCommand.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
+            var resultSet = new DataTable();
+            adapter.Fill(resultSet);
+            connection.Close();
+            
+            foreach(DataRow row in resultSet.Rows)
+            {
+                return row["DepartmentName"].ToString();
+            }
+
+            return "Department Name Unavailable";
+        }
+
+        public DataTable getDepartmentReports(string departmentName)
+        {
+            var connection = new SqlConnection(connectionString);
+            var selectCommand = new SqlCommand("Select * From Reports Inner Join aspnet_Users on reports.ConsultantID = aspnet_users.Username where DepartmentName = @deptName", connection);
+            var adapter = new SqlDataAdapter(selectCommand);
+            selectCommand.Parameters.Add("@deptName", SqlDbType.NVarChar).Value = departmentName;
+            var resultSet = new DataTable();
+            adapter.Fill(resultSet);
+            connection.Close();
+            return resultSet;
+        }
+
     }
     
 }

@@ -47,3 +47,10 @@ C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingB
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.dll
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.pdb
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
+C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb

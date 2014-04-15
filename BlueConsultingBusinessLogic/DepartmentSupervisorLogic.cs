@@ -6,12 +6,36 @@ using System.Threading.Tasks;
 
 namespace BlueConsultingBusinessLogic
 {
-    class DepartmentSupervisorLogic
+    public class DepartmentSupervisorLogic
     {
-        string id;
-        DatabaseAccess da = new DatabaseAccess();
-        List<Report> reports = new List<Report>();
+        private string username;
+        private Department department;
+        private DatabaseAccess databaseAccess = new DatabaseAccess();
 
+        public string Username 
+        {
+            get
+            {
+                return username;
+            }
+        }
+        public Department Department 
+        {
+            get
+            {
+                return department;
+            }
+        }
 
+        public DepartmentSupervisorLogic(string username)
+        {
+            this.username = username;
+            loadDepartment();
+        }
+
+        private void loadDepartment()
+        {
+            department = new Department(databaseAccess.getDepartmentName(username));
+        }
     }
 }
