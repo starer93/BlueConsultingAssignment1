@@ -1,0 +1,40 @@
+c:\users\11435803\documents\visual studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+c:\users\11435803\documents\visual studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+c:\users\11435803\documents\visual studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
+c:\users\11435803\documents\visual studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+c:\users\11435803\documents\visual studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11435803\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\11435803\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.ReportDataSet.resources
+C:\Users\11435803\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csproj.GenerateResource.Cache
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.ReportDataSet.resources
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csproj.GenerateResource.Cache
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.ReportDataSet.resources
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csproj.GenerateResource.Cache
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230455\Desktop\Assignment\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Anthoni\Desktop\Assignment8-4-149pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\Anthoni\Desktop\Assignment8-4-149pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Anthoni\Desktop\Assignment8-4-149pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Anthoni\Desktop\Assignment8-4-149pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Anthoni\Desktop\Assignment8-4-149pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache

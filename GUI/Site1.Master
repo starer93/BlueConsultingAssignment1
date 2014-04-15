@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="GUI.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="BlueConsulting.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style="height: 309px; width: 1249px">
+    <div id ="layout">
+        Blue Consulting<br />
+        <br />
+    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    <div id ="layout">
+        <br />
+        <br />
+    </div>
+        <br />
+    </div>
+    </form>
+</body>
+</html>
