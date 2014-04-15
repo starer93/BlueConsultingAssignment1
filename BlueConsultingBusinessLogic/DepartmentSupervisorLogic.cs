@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,5 +38,21 @@ namespace BlueConsultingBusinessLogic
         {
             department = new Department(databaseAccess.getDepartmentName(username));
         }
+
+        public List<Report> loadAllReports()
+        {
+            DataTable dataTable = databaseAccess.getDepartmentReports(department.Name);
+            List<Report> reports = new List<Report>();
+            foreach (DataRow d in dataTable.Rows)
+            {
+                Report report = new Report();
+                //get report id
+
+                report.ReportID = d["Id"].ToString();
+                reports.Add(report);
+            }
+            return reports;
+        }
+
     }
 }

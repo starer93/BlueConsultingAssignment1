@@ -25,7 +25,14 @@ namespace GUI.DepartmentSupervisor
 
         private void updatePage()
         {
-            departmentSupervisor.Department.updateDepartmentReports();
+            List<Report> reports = departmentSupervisor.loadAllReports();
+
+            foreach (Report report in reports)
+            {
+                listBoxReports.Items.Add(report.ReportID);
+            }
+
+            //departmentSupervisor.Department.updateDepartmentReports();
             lblCurrentUser.Text = departmentSupervisor.Username ;
             lblDepartmentName.Text = departmentSupervisor.Department.Name;
             lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
