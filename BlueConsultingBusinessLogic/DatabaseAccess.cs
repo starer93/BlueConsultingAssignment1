@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
-using BlueConsultingBusinessLogic.ReportDataSetTableAdapters;
+using BlueConsultingBusinessLogic;
 using System.Data;
 
 namespace BlueConsultingBusinessLogic
@@ -14,7 +14,7 @@ namespace BlueConsultingBusinessLogic
     public class DatabaseAccess
     {
         string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-        public ReportDataSet getReportDataSet(string consultantID)
+        public DataSet getReportDataSet(string consultantID)
         {
             var connection = new SqlConnection(connectionString);
             var selectCommand = new SqlCommand("Select * From Reports where ConsultantID LIKE @id", connection);
@@ -22,7 +22,7 @@ namespace BlueConsultingBusinessLogic
 
             selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = "%" + consultantID + "%";
 
-            var resultSet = new ReportDataSet();
+            var resultSet = new DataSet();
             adapter.Fill(resultSet);
             connection.Close();
             return resultSet;

@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BlueConsultingBusinessLogic;
-using BlueConsultingBusinessLogic.ReportDataSetTableAdapters;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,30 +19,10 @@ namespace GUI.Consultant
             Page.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             //update the date time using session?
             labelDate.Text = DateTime.Now.ToString();
-
-            List<Report> reports = new List<Report>();
-
-            //var connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-            //var connection = new SqlConnection(connectionString);
-            //var selectCommand = new SqlCommand("Select * From Reports where ConsultantID LIKE @id", connection);
-            //var adapter = new SqlDataAdapter(selectCommand);
-
-            //selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = "%" + User.Identity.Name + "%";
-
-            //var resultSet = new DataSet();
-            //adapter.Fill(resultSet);
-
-            //GridView1.DataSource = resultSet;
-            //GridView1.DataBind();
-
             DatabaseAccess database = new DatabaseAccess();
-            ReportDataSet reportDataSet = database.getReportDataSet(User.Identity.Name);
-            var table = new ReportsTableAdapter().GetData();
-            GridView1.DataSource = table;
+            DataSet reportDataSet = database.getReportDataSet(User.Identity.Name);
+            GridView1.DataSource = reportDataSet;
             GridView1.DataBind();
-            //connection.Close();
-            //if(User.IsInRole
-
         }
 
         protected void btnCreateReport_Click(object sender, EventArgs e)

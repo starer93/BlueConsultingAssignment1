@@ -30,10 +30,10 @@ namespace BlueConsultingBusinessLogic
             this.DepartmentSupervisorID = null;
         }
 
-        public Report(ReportDataSet reportDataSet)
-        {
-            //this.ConsultantID=reportDataSet.
-        }
+        //public Report(DataSet reportDataSet)
+        //{
+        //    //this.ConsultantID=reportDataSet.
+        //}
         public void addExpense(Expense expense)
         {
             expenses.Add(expense);

@@ -38,3 +38,9 @@ C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsult
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
