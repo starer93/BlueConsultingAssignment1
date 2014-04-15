@@ -1,0 +1,18 @@
+fix log in permissions
+
+Vertical slices (functionality)
+
+Login page + UT
+Consultant adding report + UT
+Consultant viewing own reports + UT
+Department supervisor viewing reports within department + UT
+Department supervisor filtering reports (approved/rejected)
+D/S approve/reject functionality + UT + include business logic (budget)
+Account Staff viewing all reports + business logic 
+Account Staff finalize/reject
+Account filtering reports (approved/rejected)
+Account staff viewing budgets for all, for departments, expenses for supervisor
+Finalize assignment requirements
+Creating test data
+Peer review
+GUI redesign + master page
