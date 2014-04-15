@@ -4,16 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Configuration;
+using System.Data;
 namespace BlueConsultingBusinessLogic
 {
     public class Report
     {
         List<Expense> expenses = new List<Expense>();
         public String ConsultantID { get; set; } //later on, we need to get this from database
+        public String ReportID { get; set; }
+        private DatabaseAccess databaseAccess = new DatabaseAccess();
+
         public String DepartmentSupervisorID { get; set; }
-        //public String ReportDate { get; set; }
         public String ReportStatus { get; set; }
         public Image PDF { get; set; }
+
         public Report(string ConsultantID, string ReportStatus, string ReceiptPdfFilePath)
         {
             this.ConsultantID = ConsultantID;
@@ -30,10 +35,11 @@ namespace BlueConsultingBusinessLogic
             this.DepartmentSupervisorID = null;
         }
 
-        //public Report(DataSet reportDataSet)
-        //{
-        //    //this.ConsultantID=reportDataSet.
-        //}
+        public Report()
+        {
+
+        }
+
         public void addExpense(Expense expense)
         {
             expenses.Add(expense);
@@ -45,6 +51,11 @@ namespace BlueConsultingBusinessLogic
             return expenses;
         }
 
+        public int numberOfExpenses()
+        {
+            return expenses.Count;
+        }
+
         public double getTotalExpenses()
         {
             double sum = 0;
@@ -53,6 +64,22 @@ namespace BlueConsultingBusinessLogic
                 sum += expense.getAmount();
             }
             return sum;
+        }
+
+        public List<Expense> GetExpensesFromDB()
+        {
+            DataTable dataTable = databaseAccess.getExpenseDataTable(ReportID);
+
+            foreach (DataRow d in dataTable.Rows)
+            {
+                Expense expense = new Expense();
+                //get report id
+
+                //expense.Amount = Convert.ToDouble(d["Amount"].ToString()); //stores entire expense row
+                expense.Location = d["Location"].ToString();
+                expenses.Add(expense);
+            }
+            return expenses;
         }
 
         //public submitReport

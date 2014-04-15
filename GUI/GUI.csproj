@@ -65,6 +65,7 @@
     </Content>
     <Content Include="BlueConsulting.css" />
     <Content Include="Consultant\ConsultantMainGUI.aspx" />
+    <Content Include="Consultant\ShowReport.aspx" />
     <Content Include="Consultant\SubmitReport.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DepartmentSupervisor\DepartmentSupervisorMainGUI.aspx" />
@@ -85,6 +86,13 @@
     </Compile>
     <Compile Include="Consultant\ConsultantMainGUI.aspx.designer.cs">
       <DependentUpon>ConsultantMainGUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultant\ShowReport.aspx.cs">
+      <DependentUpon>ShowReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultant\ShowReport.aspx.designer.cs">
+      <DependentUpon>ShowReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Consultant\SubmitReport.aspx.cs">
       <DependentUpon>SubmitReport.aspx</DependentUpon>

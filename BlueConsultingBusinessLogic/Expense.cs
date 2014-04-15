@@ -13,6 +13,7 @@ namespace BlueConsultingBusinessLogic
         public double Amount { get; set; }
         public String Currency { get; set; }
         public String Receipts { get; set; } //later on, this will need to store multiple receipts
+        public String ReportID { get; set; }
 
         public Expense(String location, String description, double amount, String currency, String receipts)
         {
@@ -24,10 +25,15 @@ namespace BlueConsultingBusinessLogic
             this.Receipts = receipts; //later on, this will need to store multiple receipts
         }
 
+        public Expense()
+        {
+        }
+
         public String GetExpense()
         {
             return String.Format("{0}, {1}, {2}, {3}, {4}", Location, Description, Amount, Currency, Receipts);
         }
+
 
         public double getAmount()
         {

@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountStaff.cs" />
-    <Compile Include="Consultant.cs" />
+    <Compile Include="AccountStaffLogic.cs" />
+    <Compile Include="ConsultantLogic.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Department.cs" />
-    <Compile Include="DepartmentSupervisor.cs" />
+    <Compile Include="DepartmentSupervisorLogic.cs" />
     <Compile Include="Expense.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

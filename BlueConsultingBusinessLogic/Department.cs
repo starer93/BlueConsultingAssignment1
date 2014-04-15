@@ -11,7 +11,7 @@ namespace BlueConsultingBusinessLogic
         private string name;
         private const double MONTHLY_BUDGET = 10000;
         private double currentBudget;
-        private List<DepartmentSupervisor> supervisors = new List<DepartmentSupervisor>();
+        private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
 
         public Department(int index)
         {

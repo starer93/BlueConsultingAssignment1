@@ -14,21 +14,34 @@ namespace BlueConsultingBusinessLogic
     public class DatabaseAccess
     {
         string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-        public DataSet getReportDataSet(string consultantID)
+
+        public DataTable getReportDataTable(string consultantID)
         {
             var connection = new SqlConnection(connectionString);
-            var selectCommand = new SqlCommand("Select * From Reports where ConsultantID LIKE @id", connection);
+            var selectCommand = new SqlCommand("Select * From Reports where ConsultantID = @id", connection);
             var adapter = new SqlDataAdapter(selectCommand);
 
-            selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = "%" + consultantID + "%";
+            selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = consultantID;
 
-            var resultSet = new DataSet();
+            var resultSet = new DataTable();
             adapter.Fill(resultSet);
             connection.Close();
             return resultSet;
         }
 
-        
+        public DataTable getExpenseDataTable(string reportID)
+        {
+            var connection = new SqlConnection(connectionString);
+            var selectCommand = new SqlCommand("Select * From Expenses where ReportID = @id" ,connection);
+            var adapter = new SqlDataAdapter(selectCommand);
+            
+            selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = reportID;
+            var resultSet = new DataTable();
+            adapter.Fill(resultSet);
+            connection.Close();
+            return resultSet;
+        }
+
 
         public void insertReportToDatabase(Report report)
         {
@@ -41,7 +54,7 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value =report.DepartmentSupervisorID;
+                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
             }
 
             if (report.ConsultantID == null)
@@ -59,7 +72,7 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value =  report.ReportStatus;
+                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
             }
 
             if (report.PDF == null)
@@ -68,9 +81,10 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value =  report.PDF ;
+                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = report.PDF;
             }
             #endregion
+
             connection.Open();
             insertCommand.ExecuteNonQuery();
             connection.Close();
@@ -96,7 +110,7 @@ namespace BlueConsultingBusinessLogic
             var connection = new SqlConnection(connectionString);
             var cmd = new SqlCommand("UPDATE reports SET status = @newStatus where status = @oldStatus", connection);
             cmd.Parameters.AddWithValue("@oldstatus", oldStatus);
-            cmd.Parameters.AddWithValue("@newStatus",newStatus);
+            cmd.Parameters.AddWithValue("@newStatus", newStatus);
             cmd.ExecuteNonQuery();
         }
 
@@ -107,13 +121,12 @@ namespace BlueConsultingBusinessLogic
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = selectCommand;
             DataTable dt = new DataTable();
+
             da.Fill(dt);
             connection.Close();
             return dt;
         }
 
-
     }
-
     
 }
