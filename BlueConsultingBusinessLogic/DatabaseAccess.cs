@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
-using BlueConsultingBusinessLogic.ReportDataSetTableAdapters;
+using BlueConsultingBusinessLogic;
 using System.Data;
 
 namespace BlueConsultingBusinessLogic
@@ -14,21 +14,17 @@ namespace BlueConsultingBusinessLogic
     public class DatabaseAccess
     {
         string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-        public ReportDataSet getReportDataSet(string consultantID)
+        
+        public DataTable getDataTable(SqlCommand command)
         {
             var connection = new SqlConnection(connectionString);
-            var selectCommand = new SqlCommand("Select * From Reports where ConsultantID LIKE @id", connection);
-            var adapter = new SqlDataAdapter(selectCommand);
-
-            selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = "%" + consultantID + "%";
-
-            var resultSet = new ReportDataSet();
+            command.Connection = connection;
+            var adapter = new SqlDataAdapter(command);
+            var resultSet = new DataTable();
             adapter.Fill(resultSet);
             connection.Close();
             return resultSet;
         }
-
-        
 
         public void insertReportToDatabase(Report report)
         {
@@ -41,7 +37,7 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value =report.DepartmentSupervisorID;
+                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
             }
 
             if (report.ConsultantID == null)
@@ -59,7 +55,7 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value =  report.ReportStatus;
+                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
             }
 
             if (report.PDF == null)
@@ -68,27 +64,14 @@ namespace BlueConsultingBusinessLogic
             }
             else
             {
-                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value =  report.PDF ;
+                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = report.PDF;
             }
             #endregion
+
             connection.Open();
             insertCommand.ExecuteNonQuery();
             connection.Close();
             //var adapter = new SqlDataAdapter(selectCommand);
-        }
-
-        public DataSet getReports(string CommandLine, string para)
-        {
-            var connection = new SqlConnection(connectionString);
-            var selectCommand = new SqlCommand(CommandLine, connection);
-            var adapter = new SqlDataAdapter(selectCommand);
-
-            selectCommand.Parameters.Add("@Id", SqlDbType.VarChar).Value = "%" + para + "%";
-
-            var resultSet = new DataSet();
-            adapter.Fill(resultSet);
-            connection.Close();
-            return resultSet;
         }
 
         public void updateReport(string newStatus, string oldStatus)
@@ -96,24 +79,40 @@ namespace BlueConsultingBusinessLogic
             var connection = new SqlConnection(connectionString);
             var cmd = new SqlCommand("UPDATE reports SET status = @newStatus where status = @oldStatus", connection);
             cmd.Parameters.AddWithValue("@oldstatus", oldStatus);
-            cmd.Parameters.AddWithValue("@newStatus",newStatus);
+            cmd.Parameters.AddWithValue("@newStatus", newStatus);
             cmd.ExecuteNonQuery();
         }
 
-        public DataTable getDataTable(string command)
+        public string getDepartmentName(string username)
         {
             var connection = new SqlConnection(connectionString);
-            var selectCommand = new SqlCommand(command, connection);
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = selectCommand;
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            var selectCommand = new SqlCommand("Select DepartmentName From aspnet_Users where UserName = @username", connection);
+            var adapter = new SqlDataAdapter(selectCommand);
+            selectCommand.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
+            var resultSet = new DataTable();
+            adapter.Fill(resultSet);
             connection.Close();
-            return dt;
+            
+            foreach(DataRow row in resultSet.Rows)
+            {
+                return row["DepartmentName"].ToString();
+            }
+
+            return "Department Name Unavailable";
         }
 
+        public DataTable getDepartmentReports(string departmentName)
+        {
+            var connection = new SqlConnection(connectionString);
+            var selectCommand = new SqlCommand("Select * From Reports Inner Join aspnet_Users on reports.ConsultantID = aspnet_users.Username where DepartmentName = @deptName", connection);
+            var adapter = new SqlDataAdapter(selectCommand);
+            selectCommand.Parameters.Add("@deptName", SqlDbType.NVarChar).Value = departmentName;
+            var resultSet = new DataTable();
+            adapter.Fill(resultSet);
+            connection.Close();
+            return resultSet;
+        }
 
     }
-
     
 }

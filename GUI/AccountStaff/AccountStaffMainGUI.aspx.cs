@@ -10,7 +10,7 @@ namespace GUI.Account_Staff
 {
     public partial class AccountStaffMainGUI : System.Web.UI.Page
     {
-        AccountStaff accountStaff = new AccountStaff();
+        AccountStaffLogic accountStaff = new AccountStaffLogic();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,11 +23,12 @@ namespace GUI.Account_Staff
             string seriesName = "Budget";
             Chart1.Series.Add(seriesName);
             Chart1.Series[seriesName].BorderWidth = 2;
-            List<Department> departments = accountStaff.getDepartments();
-            foreach(Department department in departments)
+            List<DepartmentSupervisorLogic> supervisors = accountStaff.getSupervisor();
+
+            foreach (DepartmentSupervisorLogic supervisor in supervisors)
             {
-                string columnName = department.getName();
-                double YValue = department.getCurrentBudget();
+                string columnName = supervisor.Username;
+                double YValue = supervisor.getApproveAmount();
                 Chart1.Series[seriesName].Points.AddXY(columnName, YValue);
             }
 
