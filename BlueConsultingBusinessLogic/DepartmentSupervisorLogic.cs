@@ -55,21 +55,6 @@ namespace BlueConsultingBusinessLogic
             department = new Department(databaseAccess.getDepartmentName(username));
         }
 
-        public List<Report> loadAllReports()
-        {
-            DataTable dataTable = databaseAccess.getDepartmentReports(department.Name);
-            reports = new List<Report>();
-            foreach (DataRow d in dataTable.Rows)
-            {
-                Report report = new Report();
-                //get report id
-
-                report.ReportID = d["Id"].ToString();
-                reports.Add(report);
-            }
-            return reports;
-        }
-
         public double getApproveAmount()
         {
             double sum = 0;

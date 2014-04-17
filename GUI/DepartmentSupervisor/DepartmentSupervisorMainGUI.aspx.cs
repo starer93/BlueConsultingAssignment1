@@ -25,18 +25,17 @@ namespace GUI.DepartmentSupervisor
 
         private void updatePage()
         {
-            List<Report> reports = departmentSupervisor.loadAllReports();
+            lblCurrentUser.Text = departmentSupervisor.Username;
+            lblDepartmentName.Text = departmentSupervisor.Department.Name;
+            lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
+            lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getCurrentBudget();
+            departmentSupervisor.Department.updateDepartmentReports();
 
+            List<Report> reports = departmentSupervisor.Department.getDepartmentReports();
             foreach (Report report in reports)
             {
                 listBoxReports.Items.Add(report.ReportID);
             }
-
-            //departmentSupervisor.Department.updateDepartmentReports();
-            lblCurrentUser.Text = departmentSupervisor.Username ;
-            lblDepartmentName.Text = departmentSupervisor.Department.Name;
-            lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
-            lblRemainingBudget.Text = "$"+departmentSupervisor.Department.getCurrentBudget();
         }
     }
 }

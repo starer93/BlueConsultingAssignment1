@@ -37,12 +37,12 @@ namespace BlueConsultingBusinessLogic
 
         public void updateDepartmentReports()
         {
-            string a;
-            //CALL A METHOD THAT PERFORMS AN INNER JOIN IN THE DATABASE AND STORES IT IN THE REPORTSLIST
-            DataTable dataTable = databaseAccess.getDepartmentReports(Name);
-            foreach(DataRow row in dataTable.Rows)
+            DataTable dataTable = databaseAccess.getDepartmentReports(name);
+            foreach (DataRow d in dataTable.Rows)
             {
-                a = row["ConsultantID"].ToString();
+                Report report = new Report();
+                report.ReportID = d["Id"].ToString();
+                reports.Add(report);
             }
             updateCurrentBudget();
         }

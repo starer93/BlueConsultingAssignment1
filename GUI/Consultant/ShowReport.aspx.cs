@@ -16,20 +16,20 @@ namespace GUI.Consultant
             List<Report> reports = (List<Report>)Session["Reports"];
             List<Expense> expenses = new List<Expense>();
 
-            foreach (Report report in reports)
-            {
-                if (report.ReportID == reportID)
-                {
-                    expenses = report.GetExpensesFromDB();
+            //foreach (Report report in reports)
+            //{
+            //    if (report.ReportID == reportID)
+            //    {
+            //        expenses = report.GetExpensesFromDB();
 
-                    foreach (Expense expense in expenses)
-                    {
-                        ListBox1.Items.Add(expense.GetExpense());
+            //        foreach (Expense expense in expenses)
+            //        {
+            //            ListBox1.Items.Add(expense.GetExpense());
 
-                    }
+            //        }
 
-                }
-            }
+            //    }
+            //}
 
 
  
