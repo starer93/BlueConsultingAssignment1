@@ -29,49 +29,58 @@ namespace BlueConsultingBusinessLogic
         public void insertReportToDatabase(Report report)
         {
             var connection = new SqlConnection(connectionString);
+            var insertCommand = new SqlCommand("INSERT Into Reports VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @PDF, @Date)", connection);
+
             #region CommandCreation
-            var insertCommand = new SqlCommand("INSERT Into Reports VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @PDF)", connection);
-            if (report.DepartmentSupervisorID == null)
-            {
-                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = DBNull.Value;
-            }
-            else
-            {
-                insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
-            }
+            //var insertCommand = new SqlCommand("INSERT Into Reports VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @PDF)", connection);
+           
+            //if (report.DepartmentSupervisorID == null) insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = DBNull.Value;
+            //else insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
 
-            if (report.ConsultantID == null)
-            {
-                insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = DBNull.Value;
-            }
-            else
-            {
-                insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = report.ConsultantID;
-            }
+            //if (report.ConsultantID == null) insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = DBNull.Value;
+            //else insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = report.ConsultantID;
 
-            if (report.ReportStatus == null)
-            {
-                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = DBNull.Value;
-            }
-            else
-            {
-                insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
-            }
+            //if (report.ReportStatus == null) insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = DBNull.Value;
+            //else insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
 
-            if (report.PDF == null)
-            {
-                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = DBNull.Value;
-            }
-            else
-            {
-                insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = report.PDF;
-            }
+            //if (report.PDF == null) insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = DBNull.Value;
+            //else insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = report.PDF;
+
             #endregion
+
+            insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
+            insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = report.ConsultantID;
+            insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
+            insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = report.PDF;
+            insertCommand.Parameters.Add("@Date", SqlDbType.VarChar).Value = report.Date;
 
             connection.Open();
             insertCommand.ExecuteNonQuery();
             connection.Close();
-            //var adapter = new SqlDataAdapter(selectCommand);
+
+            insertExpensesToDatabase(report.GetExpenses());
+        }
+
+        private void insertExpensesToDatabase(List<Expense> expenses)
+        {
+            if (expenses != null)
+            {
+                var connection = new SqlConnection(connectionString);
+                var insertCommand = new SqlCommand("INSERT Into Expenses VALUES (@ReportID, @Description, @Location, @Amount, @Currency)", connection);
+
+                foreach (Expense expense in expenses)
+                {
+                    insertCommand.Parameters.Add("@ReportID", SqlDbType.VarChar).Value = expense.ReportID;
+                    insertCommand.Parameters.Add("@Description", SqlDbType.VarChar).Value = expense.Description;
+                    insertCommand.Parameters.Add("@Location", SqlDbType.VarChar).Value = expense.Location;
+                    insertCommand.Parameters.Add("@Amount", SqlDbType.Real).Value = expense.Amount;
+                    insertCommand.Parameters.Add("@Currency", SqlDbType.VarChar).Value = expense.Currency;
+                    connection.Open();
+                    insertCommand.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
         }
 
         public void updateReport(string newStatus, string oldStatus)

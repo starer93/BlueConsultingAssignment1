@@ -24,7 +24,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Location"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="textboxLocation" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="textboxDescription" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Amount"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="textboxAmount" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -48,7 +48,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Currency"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="dropdownlistCurrency" runat="server" Height="22px" Width="127px">
+                    <asp:DropDownList ID="listCurrency" runat="server" Height="22px" Width="127px">
                         <asp:ListItem>AUD</asp:ListItem>
                         <asp:ListItem>CHN</asp:ListItem>
                         <asp:ListItem>EUR</asp:ListItem>
@@ -60,12 +60,12 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label6" runat="server" Text="Receipts"></asp:Label>
                 </td>
-                <td><asp:FileUpload ID="FileUpload1" runat="server" Width="220px" />
+                <td><asp:FileUpload ID="fupReceipts" runat="server" Width="220px" />
                     &nbsp;</td>
             </tr>
 
         </table>
-        <asp:Button ID="btnAddExpense" runat="server" Text="Add Expense" Width="203px"/>
+        <asp:Button ID="btnAddExpense" runat="server" Text="Add Expense" Width="203px" OnClick="btnAddExpense_Click"/>
         <p />
         <asp:ListBox ID="listboxExpenses" runat="server" Width="258px"></asp:ListBox>
         <p />

@@ -40,13 +40,13 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// textboxLocation control.
+        /// txtLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtLocation;
         
         /// <summary>
         /// Label2 control.
@@ -58,13 +58,13 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// textboxDescription control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
         /// Label3 control.
@@ -76,13 +76,13 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// textboxAmount control.
+        /// txtAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
         /// Label4 control.
@@ -94,13 +94,13 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// dropdownlistCurrency control.
+        /// listCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropdownlistCurrency;
+        protected global::System.Web.UI.WebControls.DropDownList listCurrency;
         
         /// <summary>
         /// Label6 control.
@@ -112,13 +112,13 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// fupReceipts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fupReceipts;
         
         /// <summary>
         /// btnAddExpense control.
