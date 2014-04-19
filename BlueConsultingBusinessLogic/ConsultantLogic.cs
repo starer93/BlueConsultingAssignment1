@@ -12,38 +12,62 @@ namespace BlueConsultingBusinessLogic
     {
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<Report> reports = new List<Report>();
-        private string consultantID;
+        public String ConsultantID { get; set; }
 
-        public ConsultantLogic(string consultantID)
+        public ConsultantLogic(String consultantID)
         {
-            this.consultantID = consultantID;
+            this.ConsultantID = consultantID;
         }
 
-        public void addReport(Report report)
+        public void loadAllReports()
         {
-            reports.Add(report);
-        }
+            SqlCommand command = new SqlCommand("Select * From Reports where ConsultantID = @id");
+            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = ConsultantID;
 
-        public void submitReportToDatabase()
-        {
-            //DatabaseAccess.insertReportToDatabase(
-        }
-
-        public List<Report> loadAllReports()
-        {
-            var command = new SqlCommand("Select * From Reports where ConsultantID = @id");
-            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = consultantID;
             DataTable dataTable = databaseAccess.getDataTable(command);
 
-            foreach (DataRow d in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 Report report = new Report();
-                //get report id
 
-                report.ReportID = d["Id"].ToString();
-                reports.Add(report);
+                //storing each row in the report table as a report into the list
+
+                report.ReportID = row["Id"].ToString();
+                report.ReportStatus = row["ReportStatus"].ToString();
+                report.Date = row["Date"].ToString();
+                report.ConsultantID = row["ConsultantID"].ToString();
+                //report.PDF = 
+
+                reports.Add(report); //add to the list
             }
+        }
+
+        public List<Report> GetReports()
+        {
             return reports;
+        }
+
+        public Report findReport(String reportID)
+        {
+            foreach (Report report in reports)
+            {
+                if (report.ReportID == reportID)
+                {
+                    return report;
+                }
+            }
+            return null;
+        }
+
+        public void submitReport(Report report)
+        {
+            reports.Add(report);
+            submitReportToDatabase(report);
+        }
+
+        private void submitReportToDatabase(Report report)
+        {
+            databaseAccess.insertReportToDatabase(report);
         }
 
     }

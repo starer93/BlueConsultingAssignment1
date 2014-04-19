@@ -25,13 +25,46 @@
         </asp:Chart>
     
         <br />
-        Overall approved expenses:<br />
         <br />
-        Reports<br />
-        <asp:ListView ID="ListView1" runat="server">
-        </asp:ListView>
     
     </div>
+         <asp:ListBox ID="ListBoxReport" runat="server"></asp:ListBox>
+        <div>
+       <asp:ListView runat="server" ID="ListViewReport" >
+         <LayoutTemplate> 
+             <table border="1" style="width:300px"> 
+                 <thead> 
+                     <tr> 
+                         <th>ID</th> 
+                         <th>Description</th> 
+                         <th>Location</th>
+                         <th>Amount</th> 
+                         <th>Currency</th>
+                     </tr> 
+                 </thead> 
+                 <tbody> 
+                     <asp:PlaceHolder runat="server" ID="itemPlaceholder" /> 
+                 </tbody> 
+             </table>
+             <asp:Button ID="ButtonApprove" runat="server" Text="Approve"/>
+             <asp:Button ID="ButtonReject" runat="server" Text="Reject"/>
+         </LayoutTemplate> 
+
+        <ItemTemplate> 
+            <tr> 
+                <td><%# Eval("id") %></td> 
+                <td><%# Eval("description") %></td> 
+                <td><%# Eval("location") %></td> 
+                <td><%# Eval("amount") %></td> 
+                <td><%# Eval("currency") %></td> 
+            </tr> 
+         </ItemTemplate> 
+      <EmptyDataTemplate>
+      No records found
+   </EmptyDataTemplate>
+
+    </asp:ListView>
+        </div>
     </form>
 </body>
 </html>

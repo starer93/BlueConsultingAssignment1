@@ -62,7 +62,7 @@ namespace BlueConsultingBusinessLogic
             {
                 if (report.ReportStatus.Equals("submit"))
                 {
-                    sum += report.getTotalExpenses();
+                    sum += report.calculateTotalExpenses();
                 }
             }
             return sum;

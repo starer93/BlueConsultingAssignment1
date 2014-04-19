@@ -39,24 +39,19 @@ namespace BlueConsultingBusinessLogic
             }
 
 
-            for (int i = 0; i < NUMBER_OF_Department; i++)
-            {
-                departments.Add(new Department(i));
-            }
-
+            fillReports();
         }
 
 
         private void fillReports()
         {
-            SqlCommand command = new SqlCommand("Select * From Reports where ReportStatus LIKE @status");
-            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = "ok";
-            DataTable dt = new DataTable();
-
-            dt= da.getDataTable(command);
+            SqlCommand command = new SqlCommand("Select Id From Reports where ReportStatus = @status");
+            command.Parameters.Add("@status", SqlDbType.VarChar).Value = "submit";
+            DataTable dt = databaseAcess.getDataTable(command);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                var id = dt.Rows[i]["ID"].ToString();
+                string id = dt.Rows[i]["Id"].ToString();
+                reports.Add(new Report(id));
                 
             }
         }
@@ -64,6 +59,11 @@ namespace BlueConsultingBusinessLogic
         public List<DepartmentSupervisorLogic> getSupervisor()
         {
             return ds;
+        }
+
+        public List<Report> getReports()
+        {
+            return reports;
         }
 
     }

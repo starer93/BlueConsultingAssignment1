@@ -13,31 +13,38 @@ namespace GUI.Consultant
         protected void Page_Load(object sender, EventArgs e)
         {
             String reportID = (String)Session["ReportID"];
-            List<Report> reports = (List<Report>)Session["Reports"];
+            List<Report> reports = new List<Report>();
             List<Expense> expenses = new List<Expense>();
+            ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
 
-            //foreach (Report report in reports)
-            //{
-            //    if (report.ReportID == reportID)
-            //    {
-            //        expenses = report.GetExpensesFromDB();
+            lblSelectedReportID.Text += reportID;
 
-            //        foreach (Expense expense in expenses)
-            //        {
-            //            ListBox1.Items.Add(expense.GetExpense());
+            if (consultant != null)
+            {
+                reports = consultant.GetReports();
+                //find all expenses that match reportID
+                Report report = consultant.findReport(reportID);
 
-            //        }
+                if (report != null)
+                {
+                    report.LoadExpensesFromDB();
+                    expenses = report.GetExpenses();
 
-            //    }
-            //}
-
-
- 
+                    foreach (Expense expense in expenses)
+                    {
+                        txtReportPreview.Text += expense.PrintExpense();
+                    }
+                }
+                else
+                {
+                    lblSelectedReportID.Text += " NOT FOUND";
+                }
+            } 
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
         }        
     }
 }
