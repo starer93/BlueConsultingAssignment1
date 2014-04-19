@@ -14,6 +14,7 @@ namespace BlueConsultingBusinessLogic
         private double currentBudget;
         private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
         private DatabaseAccess databaseAccess = new DatabaseAccess();
+        private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
         private List<Report> reports = new List<Report>();
 
         public string Name 

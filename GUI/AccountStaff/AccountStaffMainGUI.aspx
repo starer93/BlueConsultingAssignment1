@@ -28,7 +28,7 @@
         <br />
     
     </div>
-         <asp:ListBox ID="ListBoxReport" runat="server"></asp:ListBox>
+         <asp:ListBox ID="ListBoxReport" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBoxReport_SelectedIndexChanged"></asp:ListBox>
         <div>
        <asp:ListView runat="server" ID="ListViewReport" >
          <LayoutTemplate> 
