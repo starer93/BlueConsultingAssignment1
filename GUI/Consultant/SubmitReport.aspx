@@ -60,17 +60,16 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label6" runat="server" Text="Receipts"></asp:Label>
                 </td>
-                <td><asp:FileUpload ID="fupReceipts" runat="server" Width="220px" />
-                    &nbsp;</td>
+                <td><asp:FileUpload ID="fupReceipts" runat="server" Width="125px" /> </td>
             </tr>
 
         </table>
-        <asp:Button ID="btnAddExpense" runat="server" Text="Add Expense" Width="203px" OnClick="btnAddExpense_Click"/>
-        <p />
-        <asp:ListBox ID="listboxExpenses" runat="server" Width="258px"></asp:ListBox>
-        <p />
-        <asp:Button ID="btnSubmitReport" runat="server" Text="Submit Report" Width="99px" OnClick="btnSubmitReport_Click" />
-        <asp:Button ID="btnBack" runat="server" Text="Back" Width="104px" OnClick="btnBack_Click" />
+        <asp:Button ID="btnAddExpense" runat="server" Text="Add Expense" Width="201px" OnClick="btnAddExpense_Click"/>
+        <h3>Expenses List</h3>
+        <asp:ListBox ID="listboxExpenses" runat="server" Width="200px"></asp:ListBox>
+        <br />
+        <asp:Button ID="btnSubmitReport" runat="server" Text="Submit Report" Width="200px" OnClick="btnSubmitReport_Click" />
+        <br />
         <asp:Label ID="labelStatus" runat="server"></asp:Label>
     </form>
 </body>

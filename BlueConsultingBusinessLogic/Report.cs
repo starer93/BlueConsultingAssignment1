@@ -15,24 +15,26 @@ namespace BlueConsultingBusinessLogic
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         List<Expense> expenses = new List<Expense>();
 
-        public String ConsultantID { get; set; } 
+        public String DepartmentSupervisorID { get; set; } 
+        public String ConsultantID { get; set; }
         public String ReportID { get; set; }
         public String ReportStatus { get; set; }
         public String Date { get; set; }
-        public Image PDF { get; set; } //this should be in expenses
-
-        public String DepartmentSupervisorID { get; set; } //why?
+        public Image PDF { get; set; } //this needs to be a byte
 
         public Report()
         {
             //instantitate report
         }
 
-        public Report(string id)
+        public Report(String departmentSupervisorID, String consultantID, String reportID, String reportStatus, String date, Image pdf)
         {
-            ReportID = id;
-            LoadExpensesFromDB();
-            fillReport();
+            this.DepartmentSupervisorID = departmentSupervisorID;
+            this.ConsultantID = consultantID;
+            this.ReportID = reportID;
+            this.ReportStatus = reportStatus;
+            this.Date = date;
+            this.PDF = pdf;
         }
 
         public String PrintReport()
@@ -45,19 +47,9 @@ namespace BlueConsultingBusinessLogic
             expenses.Add(expense);
         }
 
-        private void fillReport()
-        {
-            SqlCommand command = new SqlCommand("Select * From Reports where Id = @id");
-            command.Parameters.Add("@id", SqlDbType.VarChar).Value = ReportID;
-            DataTable dataTable = databaseAccess.getDataTable(command);
-            DataRow d = dataTable.Rows[0];
-            ReportStatus = d["ReportStatus"].ToString();
-            Date = d["Date"].ToString();
-        }
-        
         public void LoadExpensesFromDB()
         {
-            SqlCommand command = new SqlCommand("Select * From Expenses where ReportID = @Id");
+            SqlCommand command = new SqlCommand("Select * From Expenses where ReportID = @id");
             command.Parameters.Add("@Id", SqlDbType.VarChar).Value = ReportID;
 
             DataTable dataTable = databaseAccess.getDataTable(command);
@@ -70,8 +62,8 @@ namespace BlueConsultingBusinessLogic
                 expense.Location = d["Location"].ToString();
                 expense.Description = d["Description"].ToString();
                 expense.Currency = d["Currency"].ToString();
-                expense.Amount = Convert.ToDouble(d["Amount"].ToString());
-                expense.ReportID = d["ReportID"].ToString();
+                expense.Amount = Convert.ToInt32(d["Amount"].ToString());
+                expense.ReportID = Convert.ToInt32(d["ReportID"].ToString());
 
                 expenses.Add(expense);
             }

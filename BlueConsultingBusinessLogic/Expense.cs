@@ -13,27 +13,25 @@ namespace BlueConsultingBusinessLogic
         public String Description { get; set; }
         public double Amount { get; set; }
         public String Currency { get; set; }
-        public String ReportID { get; set; }
+        public int ReportID { get; set; }
 
-        public Image Receipts { get; set; } //later on, this will need to store multiple receipts
-
-        public Expense(String location, String description, double amount, String currency, Image receipts)
+        public Expense(String location, String description, double amount, String currency, int reportID)
         {
-            //new expense
             this.Location = location;
             this.Description = description;
             this.Amount = amount;
             this.Currency = currency;
-            this.Receipts = receipts; //later on, this will need to store multiple receipts
+            this.ReportID = reportID;
         }
 
         public Expense()
         {
+
         }
 
         public String PrintExpense()
         {
-            return String.Format("{0}, {1}, {2}, {3}, {4}\n", Location, Description, Amount, Currency, Receipts);
+            return String.Format("{0}, {1}, {2}, {3}, {4}\n", Location, Description, Amount, Currency, ReportID);
         }
 
         public double getAmount()
