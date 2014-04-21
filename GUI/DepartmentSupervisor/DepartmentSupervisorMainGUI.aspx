@@ -26,6 +26,11 @@
                     Remaining Budget: 
                     <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label></p>
                 </td>
+                <td class="auto-style1">
+                    <p>
+                    Expenses Approved: 
+                    <asp:Label ID="lblExpensesApproved" runat="server"></asp:Label></p>
+                </td>
             </tr>
         </table>
         <br />
@@ -34,19 +39,21 @@
             <tr>
                 <td class="auto-style1">
                     <p>
-                        <asp:ListBox ID="listBoxReports" runat="server" Height="211px" Width="262px"></asp:ListBox>
+                        <asp:ListBox ID="listBoxReports" runat="server" Height="211px" Width="375px"></asp:ListBox>
                         </p>
                 </td>
                 <td class="auto-style1">
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-                        <asp:ListItem>All Reports</asp:ListItem>
+                    <asp:RadioButtonList ID="radioButtonReportFilter" runat="server" OnSelectedIndexChanged="radioButtonReportFilter_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:ListItem Selected="True">All Reports</asp:ListItem>
+                        <asp:ListItem>Pending Reports</asp:ListItem>
                         <asp:ListItem>Approved Reports</asp:ListItem>
                         <asp:ListItem>Rejected Reports</asp:ListItem>
+                        <asp:ListItem>Rejected by Account Staff</asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
             </tr>
         </table>
         <br />
-        <asp:Button ID="btnViewReport" runat="server" Text="View Report" />
+        <asp:Button ID="btnViewReport" runat="server" Text="View Report" OnClick="btnViewReport_Click" />
     </div>
 </asp:Content>

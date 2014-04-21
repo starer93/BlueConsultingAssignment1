@@ -69,6 +69,7 @@
     <Content Include="Consultant\SubmitReport.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DepartmentSupervisor\DepartmentSupervisorMainGUI.aspx" />
+    <Content Include="DepartmentSupervisor\ViewReport.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="DepartmentSupervisor\DepartmentSupervisorMainGUI.aspx.designer.cs">
       <DependentUpon>DepartmentSupervisorMainGUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentSupervisor\ViewReport.aspx.cs">
+      <DependentUpon>ViewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DepartmentSupervisor\ViewReport.aspx.designer.cs">
+      <DependentUpon>ViewReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

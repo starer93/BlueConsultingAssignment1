@@ -11,7 +11,7 @@ namespace BlueConsultingBusinessLogic
     {
         private string name;
         private const double MONTHLY_BUDGET = 10000;
-        private double currentBudget;
+        private double remainingBudget;
         private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
@@ -27,7 +27,7 @@ namespace BlueConsultingBusinessLogic
 
         public Department(int index)
         {
-            currentBudget = MONTHLY_BUDGET;
+            remainingBudget = MONTHLY_BUDGET;
         }
 
         public Department(string departmentName)
@@ -39,10 +39,14 @@ namespace BlueConsultingBusinessLogic
         public void updateDepartmentReports()
         {
             DataTable dataTable = databaseAccess.getDepartmentReports(name);
-            foreach (DataRow d in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 Report report = new Report();
-                report.ReportID = d["Id"].ToString();
+                report.ReportID = row["Id"].ToString();
+                report.ReportStatus = row["ReportStatus"].ToString();
+                report.Date = row["Date"].ToString();
+                report.ConsultantID = row["ConsultantID"].ToString();
+                //report.PDF = 
                 reports.Add(report);
             }
             updateCurrentBudget();
@@ -58,14 +62,40 @@ namespace BlueConsultingBusinessLogic
             return reports;
         }
 
+        public List<Report> getPendingReports()
+        {
+            List<Report> pendingReports = new List<Report>();
+            foreach (Report report in reports)
+            {
+                if (report.ReportStatus == "pending")
+                {
+                    pendingReports.Add(report);
+                }
+            }
+            return pendingReports;
+        }
+
         public List<Report> getApprovedReports()
         {
             List<Report> approvedReports = new List<Report>();
-            //Loop through list and get approved reports
+            foreach (Report report in reports)
+            {
+                if (report.ReportStatus == "approve")
+                {
+                    approvedReports.Add(report);
+                }
+            }
             return approvedReports;
         }
 
         public List<Report> getRejectedReports()
+        {
+            List<Report> rejectedReports = new List<Report>();
+            //Loop through list and get rejected reports
+            return rejectedReports;
+        }
+
+        public List<Report> getRejectedByAccountStaffReports()
         {
             List<Report> rejectedReports = new List<Report>();
             //Loop through list and get rejected reports
@@ -82,10 +112,27 @@ namespace BlueConsultingBusinessLogic
             return MONTHLY_BUDGET;
         }
 
-        public double getCurrentBudget()
+        public double getRemainingBudget()
         {
-            return currentBudget;
+            return remainingBudget;
+        }
+        public double getExpensesApproved()
+        {
+            return 0;
         }
 
+        //Search a report based on the report ID
+        public Report getReport(string reportID)
+        {
+            Report searchedReport = null;
+            foreach (Report report in reports)
+            {
+                if (report.ReportID == reportID)
+                {
+                    searchedReport = report;
+                }
+            }
+            return searchedReport;
+        }
     }
 }
