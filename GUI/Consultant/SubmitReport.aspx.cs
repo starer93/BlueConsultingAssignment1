@@ -13,8 +13,9 @@ namespace GUI.Consultant
     public partial class SubmitReport : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {            
+            lblConsultantID.Text = User.Identity.Name;
+            lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         protected void btnAddExpense_Click(object sender, EventArgs e)
@@ -26,15 +27,15 @@ namespace GUI.Consultant
 
         private Expense CreateExpense()
         {
-            String location = "", description = "", currency = "";
-            double amount = 0;
-            int reportID = 5; //need to use auto increment
+            //int reportID; //need to use auto increment
             //get all reports from db
-            location = txtLocation.Text;
-            description = txtDescription.Text;
-            amount = Convert.ToDouble(txtAmount.Text);
-            currency = listCurrency.SelectedItem.ToString();
-            reportID = 7;
+            //String sqlCommand = "SELECT Id FROM Reports WHERE 
+
+            String location = txtLocation.Text;
+            String description = txtDescription.Text;
+            Double amount = Convert.ToDouble(txtAmount.Text);
+            String currency = listCurrency.SelectedItem.ToString();
+            int reportID = 7; //get last id in table
 
             //need to check if user skips empty fields
 
@@ -44,44 +45,33 @@ namespace GUI.Consultant
 
         protected void btnSubmitReport_Click(object sender, EventArgs e)
         {
-            Report report = CreateReport();
             ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
+            Report report = CreateReport();
+            Expense expense = (Expense)Session["Expense"];
+            
+            report.AddExpense(expense);
 
             if (consultant != null)
             {
                 consultant.submitReport(report);
-                labelStatus.Text += " submitted successfully";
-            }
-            else
-            {
-                labelStatus.Text += " did not submit";
+                lblStatus.Text += " submitted successfully";
             }
         }
 
         private Report CreateReport()
         {
-            String departmentSupervisorID = "", consultantID = "", reportID = "", date = "", reportStatus = "";
-            Byte[] receipt = null; //receipts PDF
-            Expense expense = (Expense)Session["Expense"];
+            String departmentSupervisorID = "";
+            String consultantID = User.Identity.Name;
+            //String reportID = GetReportIDFromDB();
+            String date = lblDate.Text;
+            String reportStatus = "submit";
+            System.Drawing.Image receipt = GetReceipt();
 
-            consultantID = User.Identity.Name;
-            reportID = expense.ReportID.ToString();
-            reportStatus = "submit"; //this needs to be a constant
-            date = GetCurrentDate(); //need to format to dd/mm/yyyy
-            receipt = GetReceipt();
-
-            Report report = new Report(departmentSupervisorID, consultantID, reportID, reportStatus, date, null);
-            report.AddExpense(expense);
-
+            Report report = new Report(departmentSupervisorID, consultantID, "1", reportStatus, date, null);
             return report;
         }
 
-        private String GetCurrentDate()
-        {
-            return DateTime.Now.ToString("dd/MM/yyyy");
-        }
-
-        private Byte[] GetReceipt()
+        private System.Drawing.Image GetReceipt()
         {
             //get file from openfiledialog
             //parse it as byte

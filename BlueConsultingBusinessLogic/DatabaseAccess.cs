@@ -82,7 +82,6 @@ namespace BlueConsultingBusinessLogic
 
                     //insertCommand.Parameters.Clear();
                 }
-
                 connection.Close();
             }
         }
