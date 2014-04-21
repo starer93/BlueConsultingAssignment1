@@ -23,6 +23,7 @@ namespace GUI.Account_Staff
                 fillListBox();
                 ListBoxReport.SelectedIndex = 0;
                 fillListExpense(0);
+                updateReport(ListBoxReport.SelectedItem.ToString());
             }
         }
 
@@ -32,6 +33,9 @@ namespace GUI.Account_Staff
             string seriesName = "Budget";
             Chart1.Series.Add(seriesName);
             Chart1.Series[seriesName].BorderWidth = 2;
+            Chart1.Series[seriesName].IsValueShownAsLabel = true;
+            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
             List<DepartmentSupervisorLogic> supervisors = accountStaff.getSupervisor();
 
             foreach (DepartmentSupervisorLogic supervisor in supervisors)
@@ -76,9 +80,22 @@ namespace GUI.Account_Staff
 
         protected void ListBoxReport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateTable(ListBoxReport.SelectedItem.ToString());
+            string selectedItem = ListBoxReport.SelectedItem.ToString();
+            updateTable(selectedItem);
+            updateReport(selectedItem);
         }
 
+        private void updateReport(string reportID)
+        {
+            foreach (Report report in reports)
+            {
+                if (report.ReportID.Equals(reportID))
+                {
+                    LabelAmount.Text = report.calculateTotalExpenses().ToString();
+                    LabelDate.Text = report.Date;
+                }
+            }
+        }
         private void updateTable(string reportID)
         {
             List<Expense> expenses = new List<Expense>();

@@ -51,7 +51,7 @@ namespace BlueConsultingBusinessLogic
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 string id = dt.Rows[i]["Id"].ToString();
-                //reports.Add(new Report(id));
+                reports.Add(new Report(id));
                 
             }
         }
