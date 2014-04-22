@@ -20,6 +20,11 @@
         Date:               
         <asp:Label ID="lblDate" runat="server">[Value]</asp:Label>
     </p>
+    <p>
+                <asp:Label ID="Label5" runat="server">Receipts</asp:Label>
+                <asp:FileUpload ID="fupReceipts" runat="server" Width="212px" />
+            <asp:Button ID="btnCreateReport" runat="server" OnClick="btnCreateReport_Click" Text="Create Report" Width="93px" />
+    </p>
 
     <table>
         <tr>
@@ -41,7 +46,6 @@
                 <br />
                 <asp:Label ID="Label4" runat="server">Currency</asp:Label>
                 <br />
-                <asp:Label ID="Label5" runat="server">Receipts</asp:Label>
             </td>
             <td class="auto-style3">
                 <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
@@ -56,7 +60,6 @@
                     <asp:ListItem>EUR</asp:ListItem>
                 </asp:DropDownList>
                 <br />
-                <asp:FileUpload ID="fupReceipts" runat="server" Width="212px" />
             </td>
             <td class="auto-style3">
                 <asp:ListBox ID="listboxExpenses" runat="server" Width="245px" Height="112px"></asp:ListBox>

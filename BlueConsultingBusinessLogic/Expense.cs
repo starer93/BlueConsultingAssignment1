@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace BlueConsultingBusinessLogic
 {
@@ -14,6 +16,7 @@ namespace BlueConsultingBusinessLogic
         public double Amount { get; set; }
         public String Currency { get; set; }
         public int ReportID { get; set; }
+        public enum Currencies { AUD, CNY, EUR }; //CHANGE
 
         public Expense(String location, String description, double amount, String currency, int reportID)
         {
@@ -37,6 +40,21 @@ namespace BlueConsultingBusinessLogic
         public double getAmount()
         {
             return Amount;
+        }
+
+        public void submit()
+        {
+            var insertCommand = new SqlCommand(@"INSERT Into Expenses (ReportID, Description, Location, Amount, Currency) 
+                    VALUES (@ReportID, @Description, @Location, @Amount, @Currency); ; SELECT Scope_Identity();");
+
+            insertCommand.Parameters.Add("@ReportID", SqlDbType.Int).Value = ReportID;
+            insertCommand.Parameters.Add("@Description", SqlDbType.VarChar).Value = Description;
+            insertCommand.Parameters.Add("@Location", SqlDbType.VarChar).Value = Location;
+            insertCommand.Parameters.Add("@Amount", SqlDbType.Real).Value = Amount;
+            insertCommand.Parameters.Add("@Currency", SqlDbType.VarChar).Value = Currency;
+
+            DatabaseAccess databaseAccess = new DatabaseAccess();
+            databaseAccess.insertToDatabase(insertCommand);
         }
     }
 }

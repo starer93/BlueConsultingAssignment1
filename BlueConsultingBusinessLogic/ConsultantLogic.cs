@@ -59,15 +59,15 @@ namespace BlueConsultingBusinessLogic
             return null;
         }
 
-        public void submitReport(Report report)
+        public void addReport(Report report)
         {
             reports.Add(report);
             submitReportToDatabase(report);
         }
 
-        private void submitReportToDatabase(Report report)
+        public void submitReportToDatabase(Report report)
         {
-            databaseAccess.insertReportToDatabase(report);
+            report.submit();
         }
 
     }

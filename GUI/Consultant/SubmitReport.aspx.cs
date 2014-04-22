@@ -9,44 +9,79 @@ using BlueConsultingBusinessLogic;
 using System.Drawing;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace GUI.Consultant
 {
     public partial class SubmitReport : System.Web.UI.Page
     {
-        Report report = new Report();
-
         protected void Page_Load(object sender, EventArgs e)
-        {       
+        {
+            ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
             lblConsultantID.Text = User.Identity.Name;
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+            if (!IsPostBack)
+            {
+                Report report = new Report();
+                Session["Report"] = report;
+            }
+
+
+
+            //    report = CreateReport(); //create report
+            //    consultant.addReport(report);
+        }
+
+        protected void btnCreateReport_Click(object sender, EventArgs e)
+        {
+            CreateReport();
+            //enable expenses input fields
+        }
+
+        private void CreateReport()
+        {
+            Report report = (Report)Session["Report"];
+
+            report.DepartmentSupervisorID = "";
+            report.ConsultantID = User.Identity.Name;
+            report.Date = lblDate.Text;
+            report.ReportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
+            report.Receipt = GetReceipt(); 
+
+            Session["Report"] = report; //update session
+        }
+
+        private byte[] GetReceipt()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
+            SqlConnection cn = new SqlConnection(connectionString);
+            cn.Open();
+
+            int length = fupReceipts.PostedFile.ContentLength;
+            byte[] data = new byte[length];
+            fupReceipts.PostedFile.InputStream.Read(data, 0, length);
+
+            return data;
         }
 
         protected void btnAddExpense_Click(object sender, EventArgs e)
         {
-            report = CreateReport();
-            Expense expense = CreateExpense();
-            report.AddExpense(expense); //add to report
-            listboxExpenses.Items.Add(expense.PrintExpense());
+            CreateExpense();
+            Report report = (Report)Session["Report"];
+            List<Expense> expenses = report.GetExpenses();
+
+            foreach (Expense expense in expenses)
+            {
+                listboxExpenses.Items.Add(expense.PrintExpense());
+            }
         }
 
-        private Report CreateReport()
-        {
-            String departmentSupervisorID = "";
-            String consultantID = User.Identity.Name;
-            String date = lblDate.Text;
-            String reportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
-            System.Drawing.Image receipt = GetReceipt();
 
-            Report report = new Report(departmentSupervisorID, consultantID, , reportStatus, date, null);
-            return report;
-        }
 
-        private Expense CreateExpense()
+        private void CreateExpense()
         {
-            //int reportID; //need to use auto increment
-            //get all reports from db
-            //String sqlCommand = "SELECT Id FROM Reports WHERE 
+            Report report = (Report)Session["Report"];
 
             String location = txtLocation.Text;
             String description = txtDescription.Text;
@@ -54,40 +89,30 @@ namespace GUI.Consultant
             String currency = listCurrency.SelectedItem.ToString();
 
             DatabaseAccess db = new DatabaseAccess();
-            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC LIMIT 1");
+            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC");
             DataTable dt = db.getDataTable(command); //get last id in table
-            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString());
+            
+            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString()) + 1; //get largest value
             //need to check if user skips empty fields
 
             Expense expense = new Expense(location, description, amount, currency, reportID);
-            return expense;
+            
+            report.AddExpense(expense);
+
+            Session["Report"] = report;
         }
 
         protected void btnSubmitReport_Click(object sender, EventArgs e)
         {
             ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
-            //Report report = CreateReport();
-            
+            Report report = (Report)Session["Report"];
+
             if (consultant != null)
             {
-                consultant.submitReport(report);
-                lblStatus.Text += " submitted successfully";
+                consultant.submitReportToDatabase(report);
             }
         }
 
 
-
-        private System.Drawing.Image GetReceipt()
-        {
-            //get file from openfiledialog
-            //parse it as byte
-            //return to report
-
-            //FileStream fs = new FileStream();
-            //Byte[] file = new Byte[1024];
-
-            //fupReceipts.f
-            return null;
-        }
     }
 }
