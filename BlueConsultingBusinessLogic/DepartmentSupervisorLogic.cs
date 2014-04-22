@@ -63,7 +63,7 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Report report in reports)
             {
-                if (report.ReportStatuses.Equals("submit"))
+                if (report.ReportStatus.Equals("submit"))
                 {
                     sum += report.calculateTotalExpenses();
                 }
@@ -74,7 +74,7 @@ namespace BlueConsultingBusinessLogic
         private void loadPassReport()
         {
             SqlCommand command = new SqlCommand("Select Id From Reports where DepartmentSupervisorID = @Id ");
-            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = Id;
+            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = username;
             DataTable dt = databaseAccess.getDataTable(command);
             for (int i = 0; i < dt.Rows.Count; i++)
             {

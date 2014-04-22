@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueConsultingBusinessLogic", "BlueConsultingBusinessLogic\BlueConsultingBusinessLogic.csproj", "{935B6A84-C8A5-463C-BE69-21C77308892D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicUnitTesting", "..\..\..\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\BusinessLogicUnitTesting.csproj", "{ABA19A39-FD41-40E0-84D7-E76D574C4766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{935B6A84-C8A5-463C-BE69-21C77308892D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{935B6A84-C8A5-463C-BE69-21C77308892D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{935B6A84-C8A5-463C-BE69-21C77308892D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA19A39-FD41-40E0-84D7-E76D574C4766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA19A39-FD41-40E0-84D7-E76D574C4766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA19A39-FD41-40E0-84D7-E76D574C4766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA19A39-FD41-40E0-84D7-E76D574C4766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

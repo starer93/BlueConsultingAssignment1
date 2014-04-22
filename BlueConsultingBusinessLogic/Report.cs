@@ -15,20 +15,20 @@ namespace BlueConsultingBusinessLogic
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         List<Expense> expenses = new List<Expense>();
 
+        public String ReportID { get; set; }
         public String DepartmentSupervisorID { get; set; } 
         public String ConsultantID { get; set; }
-        public String ReportID { get; set; }
         public String ReportStatus { get; set; }
         public String Date { get; set; }
-        public Image PDF { get; set; } //this needs to be a byte
+        public byte[] Receipt { get; set; } //this needs to be a byte
 
         public enum ReportStatuses
         {
-            SubmittedByConsultant = "SubmittedByConsultant",
-            ApprovedByDepartmentSupervisor = "ApprovedByDepartmentSupervisor", 
-            RejectedByDepartmentSupervisor = "RejectedByDepartmentSupervisor", 
-            ApprovedByAccountStaff = "ApprovedByAccountStaff", 
-            RejectedByAccountStaff = "RejectedByAccountStaff"
+            SubmittedByConsultant,
+            ApprovedByDepartmentSupervisor, 
+            RejectedByDepartmentSupervisor, 
+            ApprovedByAccountStaff, 
+            RejectedByAccountStaff
         };
 
         public Report()
@@ -41,17 +41,6 @@ namespace BlueConsultingBusinessLogic
             ReportID = id;
             LoadExpensesFromDB();
             fillReport();
-        }
-
-
-        public Report(String departmentSupervisorID, String consultantID, String reportID, String reportStatus, String date, Image pdf)
-        {
-            this.DepartmentSupervisorID = departmentSupervisorID;
-            this.ConsultantID = consultantID;
-            this.ReportID = "";
-            this.ReportStatus = reportStatus;
-            this.Date = date;
-            this.PDF = pdf;
         }
 
         private void fillReport()
@@ -115,6 +104,28 @@ namespace BlueConsultingBusinessLogic
             }
 
             return sum;
+        }
+
+        public void submit()
+        {
+            var insertCommand = new SqlCommand(@"INSERT Into Reports (DepartmentSupervisorID, ConsultantID, ReportStatus, Receipt, Date)
+            VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @Receipt, @Date)");
+
+            insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = DepartmentSupervisorID;
+            insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = ConsultantID;
+            insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = ReportStatus;
+            insertCommand.Parameters.Add("@Receipt", SqlDbType.VarBinary).Value = Receipt; //for testing this is null
+            insertCommand.Parameters.Add("@Date", SqlDbType.VarChar).Value = Date;
+            databaseAccess.insertToDatabase(insertCommand);  
+            submitExpense(); 
+        }
+
+        public void submitExpense()
+        {
+            foreach (Expense expense in expenses)
+            {
+                expense.submit();
+            }
         }
     }
 }
