@@ -56,16 +56,17 @@ namespace GUI.DepartmentSupervisor
             }
             else if (radioButtonReportFilter.SelectedValue == "Rejected Reports")
             {
-
+                showRejectedReports();
             }
             else if (radioButtonReportFilter.SelectedValue == "Rejected by Account Staff")
             {
-
+                showRejectedByAccountStaffReports();
             }
         }
 
         private void showAllReports()
         {
+            lblReportsDescription.Text = "All Reports";
             foreach (Report report in departmentSupervisor.Department.getDepartmentReports())
             {
                 listBoxReports.Items.Add(report.PrintReport());
@@ -74,6 +75,7 @@ namespace GUI.DepartmentSupervisor
 
         private void showPendingReports()
         {
+            lblReportsDescription.Text = "Pending Reports";
             foreach (Report report in departmentSupervisor.Department.getPendingReports())
             {
                 listBoxReports.Items.Add(report.PrintReport());
@@ -82,7 +84,26 @@ namespace GUI.DepartmentSupervisor
 
         private void showApprovedReports()
         {
+            lblReportsDescription.Text = "Approved Reports";
             foreach (Report report in departmentSupervisor.Department.getApprovedReports())
+            {
+                listBoxReports.Items.Add(report.PrintReport());
+            }
+        }
+
+        private void showRejectedReports()
+        {
+            lblReportsDescription.Text = "Rejected by Department Reports";
+            foreach (Report report in departmentSupervisor.Department.getRejectedReports())
+            {
+                listBoxReports.Items.Add(report.PrintReport());
+            }
+        }
+
+        private void showRejectedByAccountStaffReports()
+        {
+            lblReportsDescription.Text = "Rejected by Account Staff Reports";
+            foreach (Report report in departmentSupervisor.Department.getRejectedByAccountStaffReports())
             {
                 listBoxReports.Items.Add(report.PrintReport());
             }

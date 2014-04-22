@@ -91,15 +91,32 @@ namespace BlueConsultingBusinessLogic
         public List<Report> getRejectedReports()
         {
             List<Report> rejectedReports = new List<Report>();
-            //Loop through list and get rejected reports
+            foreach (Report report in reports)
+            {
+                if (report.ReportStatus == "RejectedByDepartmentSupervisor")
+                {
+                    rejectedReports.Add(report);
+                }
+            }
             return rejectedReports;
         }
 
         public List<Report> getRejectedByAccountStaffReports()
         {
             List<Report> rejectedReports = new List<Report>();
-            //Loop through list and get rejected reports
+            foreach (Report report in reports)
+            {
+                if (report.ReportStatus == "RejectedByAccountStaff")
+                {
+                    rejectedReports.Add(report);
+                }
+            }
             return rejectedReports;
+        }
+
+        private List<Report> filterReport(List<Report> report)
+        {
+            return report;
         }
 
         public string getName()
