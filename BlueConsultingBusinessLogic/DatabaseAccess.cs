@@ -50,7 +50,7 @@ namespace BlueConsultingBusinessLogic
 
             insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = report.DepartmentSupervisorID;
             insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = report.ConsultantID;
-            insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatus;
+            insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = report.ReportStatuses;
             insertCommand.Parameters.Add("@PDF", SqlDbType.VarBinary).Value = DBNull.Value; //for testing this is null
             insertCommand.Parameters.Add("@Date", SqlDbType.VarChar).Value = report.Date;
 

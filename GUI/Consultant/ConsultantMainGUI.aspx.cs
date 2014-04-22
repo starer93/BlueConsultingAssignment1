@@ -90,7 +90,7 @@ namespace GUI.Consultant
             listboxReports.Items.Clear();
             foreach (Report report in reports)
             {
-                if (report.ReportStatus.Equals(filter))
+                if (report.ReportStatuses.Equals(filter))
                 {
                     listboxReports.Items.Add(report.PrintReport());
                 }

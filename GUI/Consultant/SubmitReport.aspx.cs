@@ -7,22 +7,39 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BlueConsultingBusinessLogic;
 using System.Drawing;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace GUI.Consultant
 {
     public partial class SubmitReport : System.Web.UI.Page
     {
+        Report report = new Report();
+
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {       
             lblConsultantID.Text = User.Identity.Name;
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         protected void btnAddExpense_Click(object sender, EventArgs e)
         {
+            report = CreateReport();
             Expense expense = CreateExpense();
+            report.AddExpense(expense); //add to report
             listboxExpenses.Items.Add(expense.PrintExpense());
-            Session["Expense"] = expense;
+        }
+
+        private Report CreateReport()
+        {
+            String departmentSupervisorID = "";
+            String consultantID = User.Identity.Name;
+            String date = lblDate.Text;
+            String reportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
+            System.Drawing.Image receipt = GetReceipt();
+
+            Report report = new Report(departmentSupervisorID, consultantID, , reportStatus, date, null);
+            return report;
         }
 
         private Expense CreateExpense()
@@ -35,8 +52,11 @@ namespace GUI.Consultant
             String description = txtDescription.Text;
             Double amount = Convert.ToDouble(txtAmount.Text);
             String currency = listCurrency.SelectedItem.ToString();
-            int reportID = 7; //get last id in table
 
+            DatabaseAccess db = new DatabaseAccess();
+            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC LIMIT 1");
+            DataTable dt = db.getDataTable(command); //get last id in table
+            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString());
             //need to check if user skips empty fields
 
             Expense expense = new Expense(location, description, amount, currency, reportID);
@@ -46,11 +66,8 @@ namespace GUI.Consultant
         protected void btnSubmitReport_Click(object sender, EventArgs e)
         {
             ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
-            Report report = CreateReport();
-            Expense expense = (Expense)Session["Expense"];
+            //Report report = CreateReport();
             
-            report.AddExpense(expense);
-
             if (consultant != null)
             {
                 consultant.submitReport(report);
@@ -58,18 +75,7 @@ namespace GUI.Consultant
             }
         }
 
-        private Report CreateReport()
-        {
-            String departmentSupervisorID = "";
-            String consultantID = User.Identity.Name;
-            //String reportID = GetReportIDFromDB();
-            String date = lblDate.Text;
-            String reportStatus = "submit";
-            System.Drawing.Image receipt = GetReceipt();
 
-            Report report = new Report(departmentSupervisorID, consultantID, "1", reportStatus, date, null);
-            return report;
-        }
 
         private System.Drawing.Image GetReceipt()
         {

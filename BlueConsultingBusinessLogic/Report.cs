@@ -22,6 +22,15 @@ namespace BlueConsultingBusinessLogic
         public String Date { get; set; }
         public Image PDF { get; set; } //this needs to be a byte
 
+        public enum ReportStatuses
+        {
+            SubmittedByConsultant = "SubmittedByConsultant",
+            ApprovedByDepartmentSupervisor = "ApprovedByDepartmentSupervisor", 
+            RejectedByDepartmentSupervisor = "RejectedByDepartmentSupervisor", 
+            ApprovedByAccountStaff = "ApprovedByAccountStaff", 
+            RejectedByAccountStaff = "RejectedByAccountStaff"
+        };
+
         public Report()
         {
             //instantitate report
@@ -31,7 +40,7 @@ namespace BlueConsultingBusinessLogic
         {
             this.DepartmentSupervisorID = departmentSupervisorID;
             this.ConsultantID = consultantID;
-            this.ReportID = reportID;
+            this.ReportID = "";
             this.ReportStatus = reportStatus;
             this.Date = date;
             this.PDF = pdf;
