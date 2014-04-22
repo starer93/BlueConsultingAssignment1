@@ -63,7 +63,7 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Report report in reports)
             {
-                if (report.ReportStatus.Equals("submit"))
+                if (report.ReportStatuses.Equals("submit"))
                 {
                     sum += report.calculateTotalExpenses();
                 }
