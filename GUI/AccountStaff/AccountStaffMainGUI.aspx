@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
 </head>
 <body>
@@ -13,9 +13,9 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Chart ID="Chart1" runat="server" OnLoad="Chart1_Load">
-            <series>
-                <asp:Series Name="Series1">
+        <asp:Chart ID="Chart1" runat="server" OnLoad="Chart1_Load" AntiAliasing="Text">
+            <series >
+                <asp:Series Name="series" IsValueShownAsLabel="True">
                 </asp:Series>
             </series>
             <chartareas>
@@ -28,7 +28,33 @@
         <br />
     
     </div>
-         <asp:ListBox ID="ListBoxReport" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBoxReport_SelectedIndexChanged"></asp:ListBox>
+        <table border="1">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    Total Amount
+                </td>
+                <td>
+                     Date
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:ListBox ID="ListBoxReport" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBoxReport_SelectedIndexChanged"></asp:ListBox>
+                </td>
+                <td>
+                    <asp:Label ID="LabelAmount" runat="server" Text="[Amount]"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="LabelDate" runat="server" Text="[Date]"></asp:Label>
+                </td>
+                <td>
+                   <button type="button">Reciept</button>
+                </td>
+            </tr>
+        </table>
+         
         <div>
        <asp:ListView runat="server" ID="ListViewReport" >
          <LayoutTemplate> 

@@ -36,6 +36,14 @@ namespace BlueConsultingBusinessLogic
             //instantitate report
         }
 
+        public Report(string id)
+        {
+            ReportID = id;
+            LoadExpensesFromDB();
+            fillReport();
+        }
+
+
         public Report(String departmentSupervisorID, String consultantID, String reportID, String reportStatus, String date, Image pdf)
         {
             this.DepartmentSupervisorID = departmentSupervisorID;
@@ -44,6 +52,16 @@ namespace BlueConsultingBusinessLogic
             this.ReportStatus = reportStatus;
             this.Date = date;
             this.PDF = pdf;
+        }
+
+        private void fillReport()
+        {
+            SqlCommand command = new SqlCommand("Select * From Reports where Id = @id");
+            command.Parameters.Add("@id", SqlDbType.VarChar).Value = ReportID;
+            DataTable dataTable = databaseAccess.getDataTable(command);
+            DataRow d = dataTable.Rows[0];
+            ReportStatus = d["ReportStatus"].ToString();
+            Date = d["Date"].ToString();
         }
 
         public String PrintReport()

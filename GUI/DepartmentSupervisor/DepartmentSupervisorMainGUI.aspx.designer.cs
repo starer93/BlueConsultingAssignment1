@@ -49,6 +49,15 @@ namespace GUI.DepartmentSupervisor {
         protected global::System.Web.UI.WebControls.Label lblRemainingBudget;
         
         /// <summary>
+        /// lblExpensesApproved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExpensesApproved;
+        
+        /// <summary>
         /// listBoxReports control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,13 @@ namespace GUI.DepartmentSupervisor {
         protected global::System.Web.UI.WebControls.ListBox listBoxReports;
         
         /// <summary>
-        /// RadioButtonList1 control.
+        /// radioButtonReportFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList radioButtonReportFilter;
         
         /// <summary>
         /// btnViewReport control.
