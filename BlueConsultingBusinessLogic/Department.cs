@@ -11,7 +11,7 @@ namespace BlueConsultingBusinessLogic
     {
         private string name;
         private const double MONTHLY_BUDGET = 10000;
-        private double remainingBudget;
+        //private double remainingBudget = 0;
         private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
@@ -24,19 +24,18 @@ namespace BlueConsultingBusinessLogic
                 return name;
             }
         }
-
+        /*
         public Department(int index)
         {
             remainingBudget = MONTHLY_BUDGET;
-        }
+        }*/
 
         public Department(string departmentName)
         {
             name = departmentName;
-            updateCurrentBudget();
         }
 
-        public void updateDepartmentReports()
+        public void updateDepartmentReports(string month, string year)
         {
             DataTable dataTable = databaseAccess.getDepartmentReports(name);
             foreach (DataRow row in dataTable.Rows)
@@ -47,48 +46,61 @@ namespace BlueConsultingBusinessLogic
                 report.Date = row["Date"].ToString();
                 report.ConsultantID = row["ConsultantID"].ToString();
                 //report.PDF = 
+                report.LoadExpensesFromDB();
                 reports.Add(report);
             }
-            updateCurrentBudget();
         }
 
-        private void updateCurrentBudget()
+        public double TotalExpense(string month, string year)
         {
-            //LOOPS THROUGH THE REPORTS LIST AND GET NEW CURRENT BUDGET
+            List<Report> filteredReport = filterReport(reports, month, year);
+            double sum = 0;
+            foreach (Report report in filteredReport)
+            {
+                if (report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
+                {
+                    sum += report.calculateTotalExpenses();
+                }
+            }
+            return sum;
         }
 
-        public List<Report> getDepartmentReports()
+        public List<Report> getDepartmentReports(string month, string year)
         {
-            return reports;
+            List<Report> filteredReport = filterReport(reports, month, year);
+            return filteredReport;
         }
 
-        public List<Report> getPendingReports()
+        public List<Report> getPendingReports(string month, string year)
         {
             List<Report> pendingReports = new List<Report>();
             foreach (Report report in reports)
             {
-                if (report.ReportStatus == "pending")
+                if (report.ReportStatus == "SubmittedByConsultant")
                 {
                     pendingReports.Add(report);
                 }
             }
-            return pendingReports;
+
+            List<Report> filteredReport = filterReport(pendingReports, month, year);
+            return filteredReport;
         }
 
-        public List<Report> getApprovedReports()
+        public List<Report> getApprovedReports(string month, string year)
         {
             List<Report> approvedReports = new List<Report>();
             foreach (Report report in reports)
             {
-                if (report.ReportStatus == "approve")
+                if (report.ReportStatus == "ApprovedByDepartmentSupervisor")
                 {
                     approvedReports.Add(report);
                 }
             }
-            return approvedReports;
+            List<Report> filteredReport = filterReport(approvedReports, month, year);
+            return filteredReport;
         }
 
-        public List<Report> getRejectedReports()
+        public List<Report> getRejectedReports(string month, string year)
         {
             List<Report> rejectedReports = new List<Report>();
             foreach (Report report in reports)
@@ -98,10 +110,11 @@ namespace BlueConsultingBusinessLogic
                     rejectedReports.Add(report);
                 }
             }
-            return rejectedReports;
+            List<Report> filteredReport = filterReport(rejectedReports, month, year);
+            return filteredReport;
         }
 
-        public List<Report> getRejectedByAccountStaffReports()
+        public List<Report> getRejectedByAccountStaffReports(string month, string year)
         {
             List<Report> rejectedReports = new List<Report>();
             foreach (Report report in reports)
@@ -111,12 +124,22 @@ namespace BlueConsultingBusinessLogic
                     rejectedReports.Add(report);
                 }
             }
-            return rejectedReports;
+            List<Report> filteredReport = filterReport(rejectedReports, month, year);
+            return filteredReport;
         }
 
-        private List<Report> filterReport(List<Report> report)
+        private List<Report> filterReport(List<Report> originalReport, string month, string year)
         {
-            return report;
+            List<Report> filteredReport = new List<Report>();
+            string period = month + "/" + year;
+            foreach (Report report in originalReport)
+            {
+                if (report.Date.Substring(3).Equals(period))
+                {
+                    filteredReport.Add(report);
+                }
+            }
+            return filteredReport;
         }
 
         public string getName()
@@ -129,13 +152,9 @@ namespace BlueConsultingBusinessLogic
             return MONTHLY_BUDGET;
         }
 
-        public double getRemainingBudget()
+        public double getRemainingBudget(string month, string year)
         {
-            return remainingBudget;
-        }
-        public double getExpensesApproved()
-        {
-            return 0;
+            return MONTHLY_BUDGET - TotalExpense(month, year);
         }
 
         //Search a report based on the report ID

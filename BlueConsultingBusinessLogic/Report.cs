@@ -43,7 +43,7 @@ namespace BlueConsultingBusinessLogic
             fillReport();
         }
 
-        private void fillReport()
+        public void fillReport()
         {
             SqlCommand command = new SqlCommand("Select * From Reports where Id = @id");
             command.Parameters.Add("@id", SqlDbType.VarChar).Value = ReportID;

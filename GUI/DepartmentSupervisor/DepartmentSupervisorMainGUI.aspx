@@ -38,7 +38,7 @@
             <tr>
                 <td class="auto-style1">
                     
-                    <asp:DropDownList ID="ddlMonth" runat="server">
+                    <asp:DropDownList ID="ddlMonth" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged">
                         <asp:ListItem Value="01">January</asp:ListItem>
                         <asp:ListItem Value="02">February</asp:ListItem>
                         <asp:ListItem Value="03">March</asp:ListItem>
@@ -56,7 +56,7 @@
                 </td>
                 <td class="auto-style1">
                     
-                    <asp:DropDownList ID="ddlYear" runat="server">
+                    <asp:DropDownList ID="ddlYear" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged">
                         <asp:ListItem>2012</asp:ListItem>
                         <asp:ListItem>2013</asp:ListItem>
                         <asp:ListItem Selected="True">2014</asp:ListItem>
