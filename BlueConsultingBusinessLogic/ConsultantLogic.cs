@@ -19,7 +19,7 @@ namespace BlueConsultingBusinessLogic
             this.ConsultantID = consultantID;
         }
 
-        public void loadAllReports()
+        public void LoadReportsFromDB()
         {
             SqlCommand command = new SqlCommand("Select * From Reports where ConsultantID = @id");
             command.Parameters.Add("@Id", SqlDbType.VarChar).Value = ConsultantID;
@@ -30,13 +30,19 @@ namespace BlueConsultingBusinessLogic
             {
                 Report report = new Report();
 
-                //storing each row in the report table as a report into the list
-
                 report.ReportID = row["Id"].ToString();
                 report.ReportStatus = row["ReportStatus"].ToString();
                 report.Date = row["Date"].ToString();
                 report.ConsultantID = row["ConsultantID"].ToString();
-                //report.PDF = 
+
+                //if (row["Receipt"] != null)
+                //{
+                //    report.Receipt = (byte[])row["Receipt"];
+                //}
+                //else
+                //{
+                //    report.Receipt = null;
+                //}
 
                 reports.Add(report); //add to the list
             }
@@ -62,13 +68,12 @@ namespace BlueConsultingBusinessLogic
         public void addReport(Report report)
         {
             reports.Add(report);
-            submitReportToDatabase(report);
+            SubmitReportToDatabase(report);
         }
 
-        public void submitReportToDatabase(Report report)
+        public void SubmitReportToDatabase(Report report)
         {
-            report.submit();
+            report.Submit();
         }
-
     }
 }

@@ -18,23 +18,42 @@ namespace GUI.Consultant
 
             if (consultant != null)
             {
-                List<Report> reports = consultant.GetReports();
                 Report report = consultant.findReport(reportID);
 
                 if (report != null)
                 {
-                    report.LoadExpensesFromDB();
-                    List<Expense> expenses = report.GetExpenses();
-                    txtReportPreview.Text = String.Empty;
-
-                    foreach (Expense expense in expenses) txtReportPreview.Text += expense.PrintExpense();
+                    ShowExpensesInReport(report);
                 }
+            }
+        }
+
+        private void ShowExpensesInReport(Report report)
+        {
+            txtReportPreview.Text = String.Empty;
+            report.LoadExpensesFromDB();
+            List<Expense> expenses = report.GetExpenses();
+
+            foreach (Expense expense in expenses)
+            {
+                txtReportPreview.Text += expense.PrintExpense();
             }
         }
 
         protected void btnClose_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
-        }        
+        }
+
+        protected void btnViewReceipt_Click(object sender, EventArgs e)
+        {
+            ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
+            String reportID = (String)Session["ReportID"];
+
+            DatabaseAccess da = new DatabaseAccess();
+
+            //open file from database
+        }
+
+       
     }
 }

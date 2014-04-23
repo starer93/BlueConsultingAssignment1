@@ -22,15 +22,6 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label lblUsername;
         
         /// <summary>
-        /// btnLoadReports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLoadReports;
-        
-        /// <summary>
         /// btnCreateReport control.
         /// </summary>
         /// <remarks>
@@ -65,15 +56,6 @@ namespace GUI.Consultant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblReportFilter;
-        
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
         
         /// <summary>
         /// btnLogout control.
