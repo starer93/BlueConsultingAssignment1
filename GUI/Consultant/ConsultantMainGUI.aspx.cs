@@ -18,7 +18,6 @@ namespace GUI.Consultant
         {
             lblUsername.Text = User.Identity.Name;
             ConsultantLogic consultant;
-
             if (!IsPostBack)
             {
                 consultant = new ConsultantLogic(User.Identity.Name);

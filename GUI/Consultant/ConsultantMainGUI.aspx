@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultantMainGUI.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="GUI.Consultant.ConsultantMainGUI" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    </asp:Content>
+</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>ConsultantID:
@@ -30,16 +30,12 @@
                     <asp:ListItem>Rejected by Department Supervisor</asp:ListItem>
                     <asp:ListItem>Rejected by Account Staff</asp:ListItem>
                 </asp:RadioButtonList>
-                <br />
-
             </td>
         </tr>
         <tr>
             <td>
                 <asp:Button ID="btnLogout" runat="server" Text="Logout" Width="130px" OnClick="btnLogout_Click" Style="vertical-align: bottom" />
-
             </td>
-
         </tr>
     </table>
 

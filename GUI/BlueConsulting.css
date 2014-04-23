@@ -1,6 +1,18 @@
-﻿#layout
+﻿#top
 {
-    background-color: #4d4d4d;
-    color: #CCCCFF;
+    background-color: #1a3a4C;
+    color: #ffffff;
     font-size : 30px;
+}
+
+#middle 
+{
+    background-color: #a8c9e0;
+}
+
+#bottom
+{
+    background-color: #1a3a4C;
+    color: #ffffff;
+    font-size : 18px;
 }
