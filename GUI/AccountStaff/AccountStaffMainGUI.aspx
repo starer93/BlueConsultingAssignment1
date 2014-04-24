@@ -11,6 +11,12 @@
 <body>
     <h2>Account Staff</h2>
     <form id="form1" runat="server">
+        <p>
+            <asp:DropDownList ID="DropDownListMonth" runat="server" CausesValidation="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DropDownList ID="DropDownListYear" runat="server">
+            </asp:DropDownList>
+        </p>
     <div>
     
         <asp:Chart ID="Chart1" runat="server" OnLoad="Chart1_Load" AntiAliasing="Text">
@@ -24,14 +30,30 @@
             </chartareas>
         </asp:Chart>
     
+        <asp:Chart ID="ChartTotal" runat="server" OnLoad="ChartTotal_Load">
+            <Series>
+                <asp:Series Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+    
         <br />
         <br />
     
     </div>
+        <asp:DropDownList ID="DropDownListMonthReport" runat="server">
+        </asp:DropDownList>
+        <asp:DropDownList ID="DropDownListYearReport" runat="server">
+        </asp:DropDownList>
+        <br />
         <table border="1">
             <tr>
                 <td>
-                </td>
+                    Report ID</td>
                 <td>
                     Total Amount
                 </td>

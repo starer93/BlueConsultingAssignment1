@@ -12,7 +12,6 @@ namespace BlueConsultingBusinessLogic
     public class DepartmentSupervisorLogic
     {
         private string username;
-        private string Id;
         private Department department;
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         List<Report> reports = new List<Report>();
@@ -32,23 +31,9 @@ namespace BlueConsultingBusinessLogic
             }
         }
 
-        public DepartmentSupervisorLogic(string Id)
+        public DepartmentSupervisorLogic(string username)
         {
-            if (Id.Count() > 10)
-            {
-                this.Id = Id;
-                SqlCommand command = new SqlCommand("Select UserName From aspnet_Users where UserId = @Id");
-                command.Parameters.Add("@Id", SqlDbType.VarChar).Value = Id;
-                DataTable dt = databaseAccess.getDataTable(command);
-                foreach (DataRow row in dt.Rows)
-                {
-                    this.username = row["UserName"].ToString();
-                }
-            }
-            else
-            {
-                username = Id;
-            }
+            this.username = username;
             loadDepartment();
             loadPassReport();
         }

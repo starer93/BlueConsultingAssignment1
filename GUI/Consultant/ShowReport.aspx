@@ -13,6 +13,7 @@
         <asp:TextBox ID="txtReportPreview" runat="server" Height="147px" TextMode="MultiLine" Width="342px" Wrap="False" ReadOnly="True"></asp:TextBox>
     </p>
     <div>
+        <asp:Button ID="btnViewReceipt" runat="server" Text="View Receipt" OnClick="btnViewReceipt_Click" />
         <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" Width="92px" />
     </div>
 </asp:Content>

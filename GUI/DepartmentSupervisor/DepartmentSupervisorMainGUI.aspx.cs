@@ -28,10 +28,20 @@ namespace GUI.DepartmentSupervisor
         {
             lblCurrentUser.Text = departmentSupervisor.Username;
             lblDepartmentName.Text = departmentSupervisor.Department.Name;
+            departmentSupervisor.Department.updateDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue);
             lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
-            lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getRemainingBudget();
-            lblExpensesApproved.Text = "$" + departmentSupervisor.Department.getExpensesApproved();
-            departmentSupervisor.Department.updateDepartmentReports();
+            lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getRemainingBudget(ddlMonth.SelectedValue, ddlYear.SelectedValue);
+            lblExpensesApproved.Text = "$" + departmentSupervisor.Department.TotalExpense(ddlMonth.SelectedValue, ddlYear.SelectedValue);
+        }
+
+        protected void ddlMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populateListBox();
+        }
+
+        protected void ddlYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            populateListBox();
         }
 
         protected void radioButtonReportFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,17 +66,18 @@ namespace GUI.DepartmentSupervisor
             }
             else if (radioButtonReportFilter.SelectedValue == "Rejected Reports")
             {
-
+                showRejectedReports();
             }
             else if (radioButtonReportFilter.SelectedValue == "Rejected by Account Staff")
             {
-
+                showRejectedByAccountStaffReports();
             }
         }
 
         private void showAllReports()
         {
-            foreach (Report report in departmentSupervisor.Department.getDepartmentReports())
+            lblReportsDescription.Text = "All Reports";
+            foreach (Report report in departmentSupervisor.Department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue))
             {
                 listBoxReports.Items.Add(report.PrintReport());
             }
@@ -74,7 +85,8 @@ namespace GUI.DepartmentSupervisor
 
         private void showPendingReports()
         {
-            foreach (Report report in departmentSupervisor.Department.getPendingReports())
+            lblReportsDescription.Text = "Pending Reports";
+            foreach (Report report in departmentSupervisor.Department.getPendingReports(ddlMonth.SelectedValue, ddlYear.SelectedValue))
             {
                 listBoxReports.Items.Add(report.PrintReport());
             }
@@ -82,7 +94,26 @@ namespace GUI.DepartmentSupervisor
 
         private void showApprovedReports()
         {
-            foreach (Report report in departmentSupervisor.Department.getApprovedReports())
+            lblReportsDescription.Text = "Approved Reports";
+            foreach (Report report in departmentSupervisor.Department.getApprovedReports(ddlMonth.SelectedValue, ddlYear.SelectedValue))
+            {
+                listBoxReports.Items.Add(report.PrintReport());
+            }
+        }
+
+        private void showRejectedReports()
+        {
+            lblReportsDescription.Text = "Rejected by Department Reports";
+            foreach (Report report in departmentSupervisor.Department.getRejectedReports(ddlMonth.SelectedValue, ddlYear.SelectedValue))
+            {
+                listBoxReports.Items.Add(report.PrintReport());
+            }
+        }
+
+        private void showRejectedByAccountStaffReports()
+        {
+            lblReportsDescription.Text = "Rejected by Account Staff Reports";
+            foreach (Report report in departmentSupervisor.Department.getRejectedByAccountStaffReports(ddlMonth.SelectedValue, ddlYear.SelectedValue))
             {
                 listBoxReports.Items.Add(report.PrintReport());
             }

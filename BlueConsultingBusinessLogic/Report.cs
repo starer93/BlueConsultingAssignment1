@@ -43,7 +43,7 @@ namespace BlueConsultingBusinessLogic
             fillReport();
         }
 
-        private void fillReport()
+        public void fillReport()
         {
             SqlCommand command = new SqlCommand("Select * From Reports where Id = @id");
             command.Parameters.Add("@id", SqlDbType.VarChar).Value = ReportID;
@@ -106,7 +106,7 @@ namespace BlueConsultingBusinessLogic
             return sum;
         }
 
-        public void submit()
+        public void Submit()
         {
             var insertCommand = new SqlCommand(@"INSERT Into Reports (DepartmentSupervisorID, ConsultantID, ReportStatus, Receipt, Date)
             VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @Receipt, @Date)");
@@ -126,6 +126,16 @@ namespace BlueConsultingBusinessLogic
             {
                 expense.submit();
             }
+        }
+
+        public int NewReportID()
+        {
+            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC");
+            DataTable dt = databaseAccess.getDataTable(command); //get last id in table
+
+            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString()) + 1; //get largest value
+
+            return reportID;
         }
     }
 }

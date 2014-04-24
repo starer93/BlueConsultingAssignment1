@@ -26,17 +26,22 @@ namespace GUI.Consultant
                 Report report = new Report();
                 Session["Report"] = report;
             }
-
-
-
-            //    report = CreateReport(); //create report
-            //    consultant.addReport(report);
         }
 
         protected void btnCreateReport_Click(object sender, EventArgs e)
         {
             CreateReport();
+            EnableExpenseFields();
             //enable expenses input fields
+        }
+
+        private void EnableExpenseFields()
+        {
+            txtAmount.Enabled = true;
+            txtDescription.Enabled = true;
+            txtLocation.Enabled = true;
+            listCurrency.Enabled = true;
+            btnAddExpense.Enabled = true;
         }
 
         private void CreateReport()
@@ -47,9 +52,10 @@ namespace GUI.Consultant
             report.ConsultantID = User.Identity.Name;
             report.Date = lblDate.Text;
             report.ReportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
-            report.Receipt = GetReceipt(); 
+            report.Receipt = GetReceipt();
+            report.Submit();
 
-            Session["Report"] = report; //update session
+            Session["Report"] = report;
         }
 
         private byte[] GetReceipt()
@@ -71,13 +77,15 @@ namespace GUI.Consultant
             Report report = (Report)Session["Report"];
             List<Expense> expenses = report.GetExpenses();
 
+            listboxExpenses.Items.Clear();
+
             foreach (Expense expense in expenses)
             {
                 listboxExpenses.Items.Add(expense.PrintExpense());
             }
+
+            btnSubmitReport.Enabled = true;
         }
-
-
 
         private void CreateExpense()
         {
@@ -87,13 +95,7 @@ namespace GUI.Consultant
             String description = txtDescription.Text;
             Double amount = Convert.ToDouble(txtAmount.Text);
             String currency = listCurrency.SelectedItem.ToString();
-
-            DatabaseAccess db = new DatabaseAccess();
-            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC");
-            DataTable dt = db.getDataTable(command); //get last id in table
-            
-            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString()) + 1; //get largest value
-            //need to check if user skips empty fields
+            int reportID = report.NewReportID();
 
             Expense expense = new Expense(location, description, amount, currency, reportID);
             
@@ -109,10 +111,15 @@ namespace GUI.Consultant
 
             if (consultant != null)
             {
-                consultant.submitReportToDatabase(report);
+                consultant.SubmitReportToDatabase(report);
+                btnSubmitReport.Enabled = false;
+                lblStatus.Text = "Report submitted successfully. Please close this window.";
             }
         }
 
-
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
+        }
     }
 }

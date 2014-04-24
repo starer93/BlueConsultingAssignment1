@@ -34,6 +34,40 @@
             </tr>
         </table>
         <br />
+        <table>
+            <tr>
+                <td class="auto-style1">
+                    
+                    <asp:DropDownList ID="ddlMonth" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged">
+                        <asp:ListItem Value="01">January</asp:ListItem>
+                        <asp:ListItem Value="02">February</asp:ListItem>
+                        <asp:ListItem Value="03">March</asp:ListItem>
+                        <asp:ListItem Selected="True" Value="04">April</asp:ListItem>
+                        <asp:ListItem Value="05">May</asp:ListItem>
+                        <asp:ListItem Value="06">June</asp:ListItem>
+                        <asp:ListItem Value="07">July</asp:ListItem>
+                        <asp:ListItem Value="08">August</asp:ListItem>
+                        <asp:ListItem Value="09">September</asp:ListItem>
+                        <asp:ListItem Value="10">October</asp:ListItem>
+                        <asp:ListItem Value="11">November</asp:ListItem>
+                        <asp:ListItem Value="12">December</asp:ListItem>
+                    </asp:DropDownList>
+                    
+                </td>
+                <td class="auto-style1">
+                    
+                    <asp:DropDownList ID="ddlYear" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged">
+                        <asp:ListItem>2012</asp:ListItem>
+                        <asp:ListItem>2013</asp:ListItem>
+                        <asp:ListItem Selected="True">2014</asp:ListItem>
+                    </asp:DropDownList>
+                    
+                </td>
+            </tr>
+        </table>
+        <br />
+        <asp:Label ID="lblReportsDescription" runat="server"></asp:Label>
+        <br />
         
         <table>
             <tr>

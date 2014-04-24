@@ -20,6 +20,7 @@ namespace GUI.Account_Staff
             initData();
             if (!IsPostBack) //if page loads for the first time
             {
+                loadReportDropBox();
                 fillListBox();
                 ListBoxReport.SelectedIndex = 0;
                 fillListExpense(0);
@@ -45,6 +46,65 @@ namespace GUI.Account_Staff
                 Chart1.Series[seriesName].Points.AddXY(columnName, YValue);
             }
 
+        }
+
+        private void loadChartDropBox()
+        {
+            List<Report> submitReports = accountStaff.getApproveReport();
+            List<string> months = getListItems(submitReports, 7, 2);
+            List<string> years = getListItems(submitReports, 4, 4);
+            foreach (string month in months)
+            {
+                DropDownListMonth.Items.Add(new ListItem(month));
+            }
+            foreach (string year in years)
+            {
+                DropDownListYear.Items.Add(new ListItem(year));
+            }
+        }
+
+        private void loadReportDropBox()
+        {
+            List<Report> submitReports = accountStaff.getReports();
+            List<string> months = getListItems(submitReports, 7, 2);
+            List<string> years = getListItems(submitReports, 4, 4);
+            foreach (string month in months)
+            {
+                DropDownListMonth.Items.Add(new ListItem(month));
+                DropDownListMonthReport.Items.Add(new ListItem(month));
+            }
+            foreach (string year in years)
+            {
+                DropDownListYear.Items.Add(new ListItem(year));
+                DropDownListYearReport.Items.Add(new ListItem(year));
+            }
+        }
+
+        private List<string> getListItems(List<Report> submitReports, int x, int y)
+        {
+            List<string> listItems = new List<string>();
+            foreach (Report report in submitReports)
+            {
+                string date = report.Date;
+                string month = date.Substring(date.Length - x, y);
+                if (listItems.Count == 0 || !isExist(listItems, month))
+                {
+                    listItems.Add(month);
+                }
+            }
+            return listItems;
+        }
+
+        private Boolean isExist(List<string> list, string input)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list.ElementAt(i).Equals(input))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void fillListBox()
@@ -119,6 +179,16 @@ namespace GUI.Account_Staff
             }
             ListViewReport.DataSource = dataTable;
             ListViewReport.DataBind();
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ChartTotal_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

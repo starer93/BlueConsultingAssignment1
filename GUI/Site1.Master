@@ -7,24 +7,33 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="BlueConsulting.css" rel="stylesheet" />
+    <link href="BlueConsulting.css" rel="stylesheet" type="text/css" />
+
 </head>
+
+
 <body>
     <form id="form1" runat="server">
-    <div style="height: 309px; width: 1249px">
-    <div id ="layout">
-        Blue Consulting<br />
-        <br />
-    </div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    <div id ="layout">
-        <br />
-        <br />
-    </div>
-        <br />
-    </div>
+        <div id="top">
+            Blue Consulting
+                <br />
+            <br />
+        </div>
+
+        <div id="middle">
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+
+        <div id="bottom">
+            <asp:Label ID="Label2" runat="server" Text="Date: "></asp:Label>
+            <asp:Label ID="lblDate" runat="server" Text="[Value]"></asp:Label>
+            <br />
+            <br />
+        </div>
     </form>
+
 </body>
 </html>
