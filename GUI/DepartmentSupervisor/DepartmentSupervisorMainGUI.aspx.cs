@@ -121,12 +121,15 @@ namespace GUI.DepartmentSupervisor
 
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
-            string selectedReport = listBoxReports.SelectedItem.Value;
-            string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
-            Report report = departmentSupervisor.Department.getReport(reportID);
-            Session["Report"] = report;
-            Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
-            populateListBox();
+            if (listBoxReports.SelectedItem != null)
+            {
+                string selectedReport = listBoxReports.SelectedItem.Value;
+                string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
+                Report report = departmentSupervisor.Department.getReport(reportID);
+                Session["Report"] = report;
+                Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
+                populateListBox();
+            }
         }
     }
 }

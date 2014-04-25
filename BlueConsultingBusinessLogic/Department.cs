@@ -59,7 +59,7 @@ namespace BlueConsultingBusinessLogic
             {
                 if (report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
                 {
-                    sum += report.calculateTotalExpenses();
+                    sum += report.calculateExpenseInAUD();
                 }
             }
             return sum;
