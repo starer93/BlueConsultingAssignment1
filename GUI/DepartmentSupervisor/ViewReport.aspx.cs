@@ -37,6 +37,10 @@ namespace GUI.DepartmentSupervisor
 
         protected void btnApprove_Click(object sender, EventArgs e)
         {
+            if(departmentSupervisor.Department.willBeOverBudget(report))
+            {
+                //POP A MESSAGE BOX HERE. NEED MORE RESEARCH
+            }
             departmentSupervisor.approveReport(report.ReportID);
             ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
         }

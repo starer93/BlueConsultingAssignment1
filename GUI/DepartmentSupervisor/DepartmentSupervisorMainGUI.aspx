@@ -26,10 +26,17 @@
                     Remaining Budget: 
                     <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label> ||</p>
                 </td>
+            </tr>
+            <tr>
                 <td class="auto-style1">
                     <p>
                     Expenses Approved: 
                     <asp:Label ID="lblExpensesApproved" runat="server"></asp:Label></p>
+                </td>
+                <td class="auto-style1">
+                    <p>
+                    Number of expenses: 
+                    <asp:Label ID="lblNumberOfExpensesApproved" runat="server"></asp:Label></p>
                 </td>
             </tr>
         </table>

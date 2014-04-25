@@ -32,6 +32,7 @@ namespace GUI.DepartmentSupervisor
             lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
             lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getRemainingBudget(ddlMonth.SelectedValue, ddlYear.SelectedValue);
             lblExpensesApproved.Text = "$" + departmentSupervisor.Department.TotalExpense(ddlMonth.SelectedValue, ddlYear.SelectedValue);
+            lblNumberOfExpensesApproved.Text = "" + departmentSupervisor.Department.numberOfExpenses();
         }
 
         protected void ddlMonth_SelectedIndexChanged(object sender, EventArgs e)
