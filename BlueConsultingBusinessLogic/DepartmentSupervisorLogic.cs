@@ -74,5 +74,9 @@ namespace BlueConsultingBusinessLogic
             // list report = deportment.getreport();
         }
 
+        public void rejectReport(string reportID)
+        {
+            databaseAccess.rejectReport(reportID);
+        }
     }
 }

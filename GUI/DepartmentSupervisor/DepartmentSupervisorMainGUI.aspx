@@ -24,7 +24,7 @@
                 <td class="auto-style1">
                     <p>
                     Remaining Budget: 
-                    <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label></p>
+                    <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label> ||</p>
                 </td>
                 <td class="auto-style1">
                     <p>

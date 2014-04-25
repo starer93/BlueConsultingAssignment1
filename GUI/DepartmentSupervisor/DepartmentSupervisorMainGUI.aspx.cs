@@ -127,6 +127,7 @@ namespace GUI.DepartmentSupervisor
                 string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
                 Report report = departmentSupervisor.Department.getReport(reportID);
                 Session["Report"] = report;
+                Session["Department Supervisor"] = departmentSupervisor;
                 Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
                 populateListBox();
             }
