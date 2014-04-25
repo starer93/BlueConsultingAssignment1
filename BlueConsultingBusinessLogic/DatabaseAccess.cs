@@ -78,12 +78,18 @@ namespace BlueConsultingBusinessLogic
         {
             var connection = new SqlConnection(connectionString);
             connection.Open();
-            var updateCommand = new SqlCommand("Update Reports Set ReportStatus = RejectedByDepartmentSupervisor where Id = @reportID", connection);
-            var adapter = new SqlDataAdapter(updateCommand);
+            var updateCommand = new SqlCommand("Update Reports Set ReportStatus = 'RejectedByDepartmentSupervisor' where Id = @reportID", connection);
             updateCommand.Parameters.Add("@reportID", SqlDbType.NVarChar).Value = reportID;
             updateCommand.ExecuteNonQuery();
         }
 
+        public void approveReport(string reportID)
+        {
+            var connection = new SqlConnection(connectionString);
+            connection.Open();
+            var updateCommand = new SqlCommand("Update Reports Set ReportStatus = 'ApprovedByDepartmentSupervisor' where Id = @reportID", connection);
+            updateCommand.Parameters.Add("@reportID", SqlDbType.NVarChar).Value = reportID;
+            updateCommand.ExecuteNonQuery();
+        }
     }
-
 }

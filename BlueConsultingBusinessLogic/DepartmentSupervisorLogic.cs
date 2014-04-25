@@ -78,5 +78,10 @@ namespace BlueConsultingBusinessLogic
         {
             databaseAccess.rejectReport(reportID);
         }
+
+        public void approveReport(string reportID)
+        {
+            databaseAccess.approveReport(reportID);
+        }
     }
 }
