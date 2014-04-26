@@ -1,102 +1,3 @@
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\bin\GUI.dll
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\bin\GUI.pdb
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.dll
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.pdb
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\bin\BlueConsultingBusinessLogic.dll
-c:\users\11435803\documents\visual studio 2012\Projects\Assignment\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\bin\GUI.dll
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\bin\GUI.pdb
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.dll
-C:\Users\11235456\Documents\Visual Studio 2012\Projects\Assignment\GUI\obj\Debug\GUI.pdb
-C:\Users\11230455\Desktop\Assignment\GUI\bin\GUI.dll
-C:\Users\11230455\Desktop\Assignment\GUI\bin\GUI.pdb
-C:\Users\11230455\Desktop\Assignment\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\11230455\Desktop\Assignment\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\11230455\Desktop\Assignment\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\11230455\Desktop\Assignment\GUI\obj\Debug\GUI.dll
-C:\Users\11230455\Desktop\Assignment\GUI\obj\Debug\GUI.pdb
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\bin\GUI.dll
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\bin\GUI.pdb
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\obj\Debug\GUI.dll
-C:\Users\11230455\Desktop\ED-AssignmentOne-master\Assignment7-4-143pm\GUI\obj\Debug\GUI.pdb
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\bin\GUI.dll
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\bin\GUI.pdb
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\obj\Debug\GUI.dll
-C:\Users\Anthoni\Desktop\Assignment8-4-149pm\GUI\obj\Debug\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\bin\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\bin\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\obj\Debug\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment10-4-8pm\GUI\obj\Debug\GUI.pdb
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Anthoni\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Sirius\Downloads\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Anthoni\Desktop\BlueConsultingAssignment1\BlueConsultingAssignment1\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\bin\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\bin\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\Assignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\bin\GUI.dll
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\bin\GUI.pdb
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.dll
-C:\Users\Anthoni\Downloads\BlueConsultingAssignment1-master\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.dll
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.pdb
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
-C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
-<<<<<<< HEAD
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\bin\GUI.dll
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\bin\GUI.pdb
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\bin\BlueConsultingBusinessLogic.dll
@@ -104,5 +5,10 @@ C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-mast
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.dll
 C:\Users\Yu\Documents\Visual Studio 2012\Projects\BlueConsultingAssignment1-master\GUI\obj\Debug\GUI.pdb
-=======
->>>>>>> ab7576c4b3bb09b5ae2c59c189b07ffdd0575f20
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.dll
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\GUI.pdb
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.dll
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\bin\BlueConsultingBusinessLogic.pdb
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.dll
+C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\GUI\obj\Debug\GUI.pdb
