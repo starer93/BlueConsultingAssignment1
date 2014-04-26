@@ -32,6 +32,7 @@ namespace GUI.DepartmentSupervisor
             lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
             lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getRemainingBudget(ddlMonth.SelectedValue, ddlYear.SelectedValue);
             lblExpensesApproved.Text = "$" + departmentSupervisor.Department.TotalExpense(ddlMonth.SelectedValue, ddlYear.SelectedValue);
+            lblNumberOfExpensesApproved.Text = "" + departmentSupervisor.Department.numberOfExpenses();
         }
 
         protected void ddlMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,12 +122,16 @@ namespace GUI.DepartmentSupervisor
 
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
-            string selectedReport = listBoxReports.SelectedItem.Value;
-            string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
-            Report report = departmentSupervisor.Department.getReport(reportID);
-            Session["Report"] = report;
-            Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
-            populateListBox();
+            if (listBoxReports.SelectedItem != null)
+            {
+                string selectedReport = listBoxReports.SelectedItem.Value;
+                string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
+                Report report = departmentSupervisor.Department.getReport(reportID);
+                Session["Report"] = report;
+                Session["Department Supervisor"] = departmentSupervisor;
+                Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
+                populateListBox();
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace BlueConsultingBusinessLogic
     {
         private string name;
         private const double MONTHLY_BUDGET = 10000;
-        //private double remainingBudget = 0;
+        private double remainingBudget = 0;
         private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
@@ -59,10 +59,24 @@ namespace BlueConsultingBusinessLogic
             {
                 if (report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
                 {
-                    sum += report.calculateTotalExpenses();
+                    sum += report.calculateExpenseInAUD();
                 }
             }
             return sum;
+        }
+
+        public int numberOfExpenses()
+        {
+            int numberOfExpenses = 0;
+            foreach (Report report in reports)
+            {
+                if(report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
+                {
+                    numberOfExpenses += report.GetExpenses().Count;
+                }
+            }
+
+            return numberOfExpenses;
         }
 
         public List<Report> getDepartmentReports(string month, string year)
@@ -154,7 +168,13 @@ namespace BlueConsultingBusinessLogic
 
         public double getRemainingBudget(string month, string year)
         {
-            return MONTHLY_BUDGET - TotalExpense(month, year);
+            remainingBudget = MONTHLY_BUDGET - TotalExpense(month, year);
+            return remainingBudget;
+        }
+
+        public bool willBeOverBudget(Report report)
+        {
+            return (remainingBudget + report.calculateExpenseInAUD()) > MONTHLY_BUDGET;
         }
 
         //Search a report based on the report ID

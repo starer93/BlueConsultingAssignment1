@@ -6,5 +6,11 @@
     Report ID:
     <asp:Label ID="lblReportID" runat="server"></asp:Label>
     <br />
+    <asp:ListBox ID="ListBox1" runat="server" Height="197px" Width="304px"></asp:ListBox>
+    <br />
+    <br />
+    <br />
+    <asp:Button ID="btnApprove" runat="server" BackColor="#33CC33" Height="39px" Text="Approve" Width="160px" OnClick="btnApprove_Click" />
+    <asp:Button ID="btnReject" runat="server" BackColor="Red" Height="40px" OnClick="btnReject_Click" Text="Reject" Width="148px" />
     <br />
 </asp:Content>

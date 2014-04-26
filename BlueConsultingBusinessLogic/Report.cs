@@ -21,6 +21,8 @@ namespace BlueConsultingBusinessLogic
         public String ReportStatus { get; set; }
         public String Date { get; set; }
         public byte[] Receipt { get; set; } //this needs to be a byte
+        private const double CNY_CONVERTION_RATE = 0.17;
+        private const double EUR_CONVERTION_RATE = 1.48;
 
         public enum ReportStatuses
         {
@@ -103,6 +105,25 @@ namespace BlueConsultingBusinessLogic
                 sum += expense.getAmount();
             }
 
+            return sum;
+        }
+
+        public double calculateExpenseInAUD()
+        {
+            double sum = 0;
+            foreach (Expense expense in expenses)
+            {
+                double aud = expense.getAmount();
+                if (expense.Currency.Equals("CNY"))
+                {
+                    aud = aud * CNY_CONVERTION_RATE;
+                }
+                else if (expense.Currency.Equals("EUR"))
+                {
+                    aud = aud * EUR_CONVERTION_RATE;
+                }
+                sum += aud;
+            }
             return sum;
         }
 
