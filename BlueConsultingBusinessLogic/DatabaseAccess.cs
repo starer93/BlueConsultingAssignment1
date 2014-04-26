@@ -65,7 +65,7 @@ namespace BlueConsultingBusinessLogic
         public void changeReportStatus(string reportID, string status)
         {
             connection.Open();
-            var updateCommand = new SqlCommand("Update Reports Set ReportStatus = @status' where Id = @reportID", connection);
+            var updateCommand = new SqlCommand("Update Reports Set ReportStatus = @status where Id = @reportID", connection);
             updateCommand.Parameters.Add("@reportID", SqlDbType.NVarChar).Value = reportID;
             updateCommand.Parameters.Add("@status", SqlDbType.NVarChar).Value = status;
             updateCommand.ExecuteNonQuery();

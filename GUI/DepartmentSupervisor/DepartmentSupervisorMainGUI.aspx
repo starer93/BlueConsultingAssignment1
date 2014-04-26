@@ -87,8 +87,6 @@
                     <asp:RadioButtonList ID="radioButtonReportFilter" runat="server" OnSelectedIndexChanged="radioButtonReportFilter_SelectedIndexChanged" AutoPostBack="True">
                         <asp:ListItem Selected="True">All Reports</asp:ListItem>
                         <asp:ListItem>Pending Reports</asp:ListItem>
-                        <asp:ListItem>Approved Reports</asp:ListItem>
-                        <asp:ListItem>Rejected Reports</asp:ListItem>
                         <asp:ListItem>Rejected by Account Staff</asp:ListItem>
                     </asp:RadioButtonList>
                 </td>

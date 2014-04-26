@@ -34,38 +34,22 @@ namespace BlueConsultingBusinessLogic
                 case 2: name = "Higher Education"; break;
                 default: name = "none"; break;
             }
-            fillConsultants(); 
+            fillReports();
         }
 
         public Department(string departmentName)
         {
             name = departmentName;
-            fillConsultants();  
+            fillReports();
         }
 
-        private void fillConsultants()
+        private void fillReports()
         {
             DataTable dataTable = databaseAccess.getDepartmentReports(name);
             foreach (DataRow row in dataTable.Rows)
             {
-                string id= row["Id"].ToString();
+                string id = row["Id"].ToString();
                 Report report = new Report(id);
-                reports.Add(report);
-            }
-        }
-
-        public void updateDepartmentReports(string month, string year)
-        {
-            DataTable dataTable = databaseAccess.getDepartmentReports(name);
-            foreach (DataRow row in dataTable.Rows)
-            {
-                Report report = new Report();
-                report.ReportID = row["Id"].ToString();
-                report.ReportStatus = row["ReportStatus"].ToString();
-                report.Date = row["Date"].ToString();
-                report.ConsultantID = row["ConsultantID"].ToString();
-                //report.PDF = 
-                report.LoadExpensesFromDB();
                 reports.Add(report);
             }
         }
@@ -98,67 +82,33 @@ namespace BlueConsultingBusinessLogic
             return numberOfExpenses;
         }
 
+        public List<Report> getDepartmentReports(string month, string year, string status)
+        {
+            List<Report> listedReport = filterReport(reports, month, year);
+            List<Report> newReports = new List<Report>();
+            foreach (Report report in listedReport)
+            {
+                if (report.ReportStatus == status)
+                {
+                    newReports.Add(report);
+                }
+            }
+            return newReports;
+        }
+
         public List<Report> getDepartmentReports(string month, string year)
         {
-            List<Report> filteredReport = filterReport(reports, month, year);
-            return filteredReport;
-        }
-
-        public List<Report> getPendingReports(string month, string year)
-        {
-            List<Report> pendingReports = new List<Report>();
-            foreach (Report report in reports)
+            List<Report> listedReport = filterReport(reports, month, year);
+            List<Report> newReports = new List<Report>();
+            foreach (Report report in listedReport)
             {
-                if (report.ReportStatus == "SubmittedByConsultant")
+                if (report.ReportStatus.Equals(Report.ReportStatuses.SubmittedByConsultant.ToString()) || report.ReportStatus.Equals(Report.ReportStatuses.RejectedByAccountStaff.ToString()))
                 {
-                    pendingReports.Add(report);
+                    newReports.Add(report);
                 }
             }
-
-            List<Report> filteredReport = filterReport(pendingReports, month, year);
-            return filteredReport;
-        }
-
-        public List<Report> getApprovedReports(string month, string year)
-        {
-            List<Report> approvedReports = new List<Report>();
-            foreach (Report report in reports)
-            {
-                if (report.ReportStatus == "ApprovedByDepartmentSupervisor")
-                {
-                    approvedReports.Add(report);
-                }
-            }
-            List<Report> filteredReport = filterReport(approvedReports, month, year);
-            return filteredReport;
-        }
-
-        public List<Report> getRejectedReports(string month, string year)
-        {
-            List<Report> rejectedReports = new List<Report>();
-            foreach (Report report in reports)
-            {
-                if (report.ReportStatus == "RejectedByDepartmentSupervisor")
-                {
-                    rejectedReports.Add(report);
-                }
-            }
-            List<Report> filteredReport = filterReport(rejectedReports, month, year);
-            return filteredReport;
-        }
-
-        public List<Report> getRejectedByAccountStaffReports(string month, string year)
-        {
-            List<Report> rejectedReports = new List<Report>();
-            foreach (Report report in reports)
-            {
-                if (report.ReportStatus == "RejectedByAccountStaff")
-                {
-                    rejectedReports.Add(report);
-                }
-            }
-            List<Report> filteredReport = filterReport(rejectedReports, month, year);
-            return filteredReport;
+            listedReport = filterReport(listedReport, month, year);
+            return newReports;
         }
 
         private List<Report> filterReport(List<Report> originalReport, string month, string year)
@@ -172,6 +122,8 @@ namespace BlueConsultingBusinessLogic
                     filteredReport.Add(report);
                 }
             }
+            int i = originalReport.Count;
+            int s = originalReport.Count;
             return filteredReport;
         }
 
