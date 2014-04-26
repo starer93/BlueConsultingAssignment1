@@ -31,7 +31,7 @@ namespace GUI.DepartmentSupervisor
 
         protected void btnReject_Click(object sender, EventArgs e)
         {
-            departmentSupervisor.rejectReport(report.ReportID);
+            departmentSupervisor.changeReportStatus(report.ReportID, Report.ReportStatuses.RejectedByDepartmentSupervisor.ToString());
             ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
         }
 
@@ -41,7 +41,7 @@ namespace GUI.DepartmentSupervisor
             {
                 //POP A MESSAGE BOX HERE. NEED MORE RESEARCH
             }
-            departmentSupervisor.approveReport(report.ReportID);
+            departmentSupervisor.changeReportStatus(report.ReportID, Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString());
             ClientScript.RegisterStartupScript(typeof(Page), "closePage", "window.close();", true);
         }
     }

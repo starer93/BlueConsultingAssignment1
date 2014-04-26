@@ -48,7 +48,7 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Report report in reports)
             {
-                if (report.ReportStatus.Equals("submit"))
+                if (report.ReportStatus.Equals(Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString()))
                 {
                     sum += report.calculateTotalExpenses();
                 }
@@ -68,20 +68,17 @@ namespace BlueConsultingBusinessLogic
             }
         }
 
+        public void changeReportStatus(string Id, string status)
+        {
+            databaseAccess.changeReportStatus(Id, status);
+            
+        }
+
         private void loadAllReport()
         {
             // loading everyreport in the department
             // list report = deportment.getreport();
         }
 
-        public void rejectReport(string reportID)
-        {
-            databaseAccess.rejectReport(reportID);
-        }
-
-        public void approveReport(string reportID)
-        {
-            databaseAccess.approveReport(reportID);
-        }
     }
 }

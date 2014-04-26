@@ -17,33 +17,27 @@ namespace BlueConsultingBusinessLogic
         public ConsultantLogic(String consultantID)
         {
             this.ConsultantID = consultantID;
+            try
+            {
+                LoadReportsFromDB();
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("An error has occurred: '{1}', :'{0}'", sqlEx, sqlEx.Number);
+            }
         }
 
         public void LoadReportsFromDB()
         {
-            SqlCommand command = new SqlCommand("Select * From Reports where ConsultantID = @id");
-            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = ConsultantID;
-
-            DataTable dataTable = databaseAccess.getDataTable(command);
-
+            DataTable dataTable = databaseAccess.getReport(ConsultantID);
             foreach (DataRow row in dataTable.Rows)
-            {
+            { 
                 Report report = new Report();
-
                 report.ReportID = row["Id"].ToString();
                 report.ReportStatus = row["ReportStatus"].ToString();
                 report.Date = row["Date"].ToString();
                 report.ConsultantID = row["ConsultantID"].ToString();
-
-                //if (row["Receipt"] != null)
-                //{
-                //    report.Receipt = (byte[])row["Receipt"];
-                //}
-                //else
-                //{
-                //    report.Receipt = null;
-                //}
-
+                report.Receipt = (byte[])row["Receipt"];
                 reports.Add(report); //add to the list
             }
         }
@@ -68,12 +62,7 @@ namespace BlueConsultingBusinessLogic
         public void addReport(Report report)
         {
             reports.Add(report);
-            SubmitReportToDatabase(report);
         }
 
-        public void SubmitReportToDatabase(Report report)
-        {
-            report.Submit();
-        }
     }
 }

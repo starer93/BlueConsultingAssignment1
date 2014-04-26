@@ -39,15 +39,26 @@ namespace BlueConsultingBusinessLogic
                 ds.Add(new DepartmentSupervisorLogic(id));
             }
 
-
+            fillDepartment();
             fillReports();
         }
 
+        private void fillDepartment()
+        {
+            for (int i = 0; i < NUMBER_OF_Department; i++)
+            {
+                departments.Add(new Department(i));
+            }
+        }
+        public List<Department> getDepartments()
+        {
+            return departments;
+        }
 
         private void fillReports()
         {
             SqlCommand command = new SqlCommand("Select Id From Reports where ReportStatus = @status");
-            command.Parameters.Add("@status", SqlDbType.VarChar).Value = "submit";
+            command.Parameters.Add("@status", SqlDbType.VarChar).Value = Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString();
             DataTable dt = databaseAcess.getDataTable(command);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -56,19 +67,19 @@ namespace BlueConsultingBusinessLogic
             }
         }
 
-        public List<Report> getApproveReport()
-        {
-            SqlCommand command = new SqlCommand("Select Id From Reports where ReportStatus = @status");
-            command.Parameters.Add("@status", SqlDbType.VarChar).Value = "approved";
-            DataTable dt = databaseAcess.getDataTable(command);
-            List<Report> approvedReports = new List<Report>();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                string id = dt.Rows[i]["Id"].ToString();
-                approvedReports.Add(new Report(id));
-            }
-            return approvedReports;
-        }
+        //public List<Report> getApproveReport()
+        //{
+        //    SqlCommand command = new SqlCommand("Select Id From Reports where ReportStatus = @status");
+        //    command.Parameters.Add("@status", SqlDbType.VarChar).Value = Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString();
+        //    DataTable dt = databaseAcess.getDataTable(command);
+        //    List<Report> approvedReports = new List<Report>();
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        string id = dt.Rows[i]["Id"].ToString();
+        //        approvedReports.Add(new Report(id));
+        //    }
+        //    return approvedReports;
+        //}
 
         public List<DepartmentSupervisorLogic> getSupervisor()
         {

@@ -12,7 +12,6 @@ namespace BlueConsultingBusinessLogic
         private string name;
         private const double MONTHLY_BUDGET = 10000;
         private double remainingBudget = 0;
-        private List<DepartmentSupervisorLogic> supervisors = new List<DepartmentSupervisorLogic>();
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
         private List<Report> reports = new List<Report>();
@@ -24,15 +23,35 @@ namespace BlueConsultingBusinessLogic
                 return name;
             }
         }
-        /*
+        
         public Department(int index)
         {
             remainingBudget = MONTHLY_BUDGET;
-        }*/
+            switch (index)
+            {
+                case 0: name = "State Services"; break;
+                case 1: name = "Logistics Services"; break;
+                case 2: name = "Higher Education"; break;
+                default: name = "none"; break;
+            }
+            fillConsultants(); 
+        }
 
         public Department(string departmentName)
         {
             name = departmentName;
+            fillConsultants();  
+        }
+
+        private void fillConsultants()
+        {
+            DataTable dataTable = databaseAccess.getDepartmentReports(name);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string id= row["Id"].ToString();
+                Report report = new Report(id);
+                reports.Add(report);
+            }
         }
 
         public void updateDepartmentReports(string month, string year)
@@ -189,6 +208,16 @@ namespace BlueConsultingBusinessLogic
                 }
             }
             return searchedReport;
+        }
+
+        public double getTotalExpense()
+        {
+            double sum = 0;
+            foreach (Report report in reports)
+            {
+                sum += report.calculateExpenseInAUD();
+            }
+            return sum;
         }
     }
 }

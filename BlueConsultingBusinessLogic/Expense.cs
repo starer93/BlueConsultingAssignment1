@@ -15,10 +15,10 @@ namespace BlueConsultingBusinessLogic
         public String Description { get; set; }
         public double Amount { get; set; }
         public String Currency { get; set; }
-        public int ReportID { get; set; }
+        public string ReportID { get; set; }
         public enum Currencies { AUD, CNY, EUR }; //CHANGE
 
-        public Expense(String location, String description, double amount, String currency, int reportID)
+        public Expense(String location, String description, double amount, String currency, string reportID)
         {
             this.Location = location;
             this.Description = description;
@@ -44,17 +44,28 @@ namespace BlueConsultingBusinessLogic
 
         public void submit()
         {
-            var insertCommand = new SqlCommand(@"INSERT Into Expenses (ReportID, Description, Location, Amount, Currency) 
-                    VALUES (@ReportID, @Description, @Location, @Amount, @Currency); ; SELECT Scope_Identity();");
-
-            insertCommand.Parameters.Add("@ReportID", SqlDbType.Int).Value = ReportID;
-            insertCommand.Parameters.Add("@Description", SqlDbType.VarChar).Value = Description;
-            insertCommand.Parameters.Add("@Location", SqlDbType.VarChar).Value = Location;
-            insertCommand.Parameters.Add("@Amount", SqlDbType.Real).Value = Amount;
-            insertCommand.Parameters.Add("@Currency", SqlDbType.VarChar).Value = Currency;
-
             DatabaseAccess databaseAccess = new DatabaseAccess();
-            databaseAccess.insertToDatabase(insertCommand);
+            databaseAccess.submitExpense(ReportID, Description, Location, Amount, Currency);
+        }
+
+        public static List<Expense> GetExpensesFromDBByReportID(string reportID)
+        {
+            DatabaseAccess da = new DatabaseAccess();
+            DataTable dataTable = da.GetExpensesByReportID(reportID);
+            List<Expense> expenses = new List<Expense>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Expense expense = new Expense();
+                expense.Amount = (double)row["Amount"];
+                expense.Currency = row["Currency"].ToString();
+                expense.Description = row["Description"].ToString();
+                expense.Location = row["Location"].ToString();
+                expense.ReportID = row["ReportID"].ToString();
+                //.Receipt = (byte[])row["Receipt"];
+                expenses.Add(expense);
+            }
+            return expenses;
         }
     }
 }

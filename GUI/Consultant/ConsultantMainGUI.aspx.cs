@@ -31,10 +31,8 @@ namespace GUI.Consultant
         }
 
         private void LoadReports(ConsultantLogic consultant)
-        {
-            consultant.LoadReportsFromDB();
+        {           
             ShowAllReports(consultant.GetReports());
-
             Session["Consultant"] = consultant;
         }
 

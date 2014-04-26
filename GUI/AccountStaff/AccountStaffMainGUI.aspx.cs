@@ -30,7 +30,7 @@ namespace GUI.Account_Staff
 
         protected void Chart1_Load(object sender, EventArgs e)
         {
-            Chart1.Titles.Add("Monthly Budget");
+            Chart1.Titles.Add("Monthly Budget - Supervisor");
             string seriesName = "Budget";
             Chart1.Series.Add(seriesName);
             Chart1.Series[seriesName].BorderWidth = 2;
@@ -50,7 +50,7 @@ namespace GUI.Account_Staff
 
         private void loadChartDropBox()
         {
-            List<Report> submitReports = accountStaff.getApproveReport();
+            List<Report> submitReports = accountStaff.getReports();
             List<string> months = getListItems(submitReports, 7, 2);
             List<string> years = getListItems(submitReports, 4, 4);
             foreach (string month in months)
@@ -188,7 +188,21 @@ namespace GUI.Account_Staff
 
         protected void ChartTotal_Load(object sender, EventArgs e)
         {
-
+            ChartTotal.Titles.Add("Monthly Budget - Company");
+            string seriesName = "CompanyBudget";
+            ChartTotal.Series.Add(seriesName);
+            ChartTotal.Series[seriesName].BorderWidth = 2;
+            ChartTotal.Series[seriesName].IsValueShownAsLabel = true;
+            ChartTotal.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
+            ChartTotal.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
+            List<Department> departments= accountStaff.getDepartments();
+            int i = departments.Count;
+            foreach (Department department in departments)
+            {
+                string columnName = department.Name;
+                double YValue = department.getTotalExpense();
+                ChartTotal.Series[seriesName].Points.AddXY(columnName, YValue);
+            }
         }
 
     }

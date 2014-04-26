@@ -10,22 +10,32 @@ using BlueConsultingBusinessLogic;
 namespace BusinessLogicUnitTesting
 {
     [TestClass]
-    class ReportUnitTest
+    public class ReportUnitTest
     {
         [TestMethod]
         public void testReportConstructorAndGetters()
         {
             string consultantID = "testPerson";
+            string reportID = "100000";
+            string date = DateTime.Now.ToString("dd/MM/yyyy");
             string reportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
-            string filepath = "testLoadRecieptPDF";       
-            Image PDF = Image.FromFile(filepath);
-            Report report = new Report("", consultantID, "100000", reportStatus, System.DateTime.Today.ToShortDateString(), PDF);           
-            Assert.Equals(consultantID, report.ConsultantID);
-            Assert.Equals(reportStatus, report.ReportStatus);
-            Assert.AreEqual(PDF, report.PDF);
+            //string filepath = "testLoadRecieptPDF";       
+            //Image PDF = Image.FromFile(filepath);
+
+            Report report = new Report();
+
+            report.ConsultantID = consultantID;
+            report.ReportID = reportID;           
+            report.Date = date;
+            report.ReportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
+            //report.Receipt = PDF;
+                  
+            Assert.AreEqual(consultantID, report.ConsultantID);
+            Assert.AreEqual(reportID, report.ReportID);
+            Assert.AreEqual(date, report.Date);
+            Assert.AreEqual(reportStatus, report.ReportStatus);
+            //Assert.AreEqual(PDF, report.PDF);
         }
 
-        //[TestMethod]
-       // public void ;
     }
 }

@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Web;
 namespace BlueConsultingBusinessLogic
 {
     public class Report
@@ -81,7 +81,7 @@ namespace BlueConsultingBusinessLogic
                 expense.Description = d["Description"].ToString();
                 expense.Currency = d["Currency"].ToString();
                 expense.Amount = Convert.ToInt32(d["Amount"].ToString());
-                expense.ReportID = Convert.ToInt32(d["ReportID"].ToString());
+                expense.ReportID = d["ReportID"].ToString();
 
                 expenses.Add(expense);
             }
@@ -102,10 +102,20 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Expense expense in expenses)
             {
-                sum += expense.getAmount();
+                sum += expense.Amount;
             }
 
             return sum;
+        }
+
+        public byte[] GetReceipt(HttpPostedFile file)
+        {
+            //FileInfo fileInfo = new FileInfo(filePath);           
+            int length = file.ContentLength;
+            byte[] data = new byte[length];
+            //FileStream fileStream = new FileStream(filePath, FileMode.Open);
+            file.InputStream.Read(data, 0, length);
+            return data;
         }
 
         public double calculateExpenseInAUD()
@@ -127,18 +137,11 @@ namespace BlueConsultingBusinessLogic
             return sum;
         }
 
-        public void Submit()
+        public void submit()
         {
-            var insertCommand = new SqlCommand(@"INSERT Into Reports (DepartmentSupervisorID, ConsultantID, ReportStatus, Receipt, Date)
-            VALUES (@DepartmentSupervisorID, @ConsultantID, @ReportStatus, @Receipt, @Date)");
-
-            insertCommand.Parameters.Add("@DepartmentSupervisorID", SqlDbType.VarChar).Value = DepartmentSupervisorID;
-            insertCommand.Parameters.Add("@ConsultantID", SqlDbType.VarChar).Value = ConsultantID;
-            insertCommand.Parameters.Add("@ReportStatus", SqlDbType.VarChar).Value = ReportStatus;
-            insertCommand.Parameters.Add("@Receipt", SqlDbType.VarBinary).Value = Receipt; //for testing this is null
-            insertCommand.Parameters.Add("@Date", SqlDbType.VarChar).Value = Date;
-            databaseAccess.insertToDatabase(insertCommand);  
-            submitExpense(); 
+            databaseAccess.SubmitReport(DepartmentSupervisorID, ConsultantID, ReportStatus,Receipt, Date);
+            //submitExpense(); 
+            ReportID = databaseAccess.GetReportID();
         }
 
         public void submitExpense()
@@ -149,14 +152,5 @@ namespace BlueConsultingBusinessLogic
             }
         }
 
-        public int NewReportID()
-        {
-            SqlCommand command = new SqlCommand("SELECT Id FROM Reports ORDER BY Id DESC");
-            DataTable dt = databaseAccess.getDataTable(command); //get last id in table
-
-            int reportID = Convert.ToInt32(dt.Rows[0]["Id"].ToString()) + 1; //get largest value
-
-            return reportID;
-        }
     }
 }

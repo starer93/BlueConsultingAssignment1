@@ -52,23 +52,8 @@ namespace GUI.Consultant
             report.ConsultantID = User.Identity.Name;
             report.Date = lblDate.Text;
             report.ReportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
-            report.Receipt = GetReceipt();
-            report.Submit();
-
+            report.Receipt = report.GetReceipt(fupReceipts.PostedFile);
             Session["Report"] = report;
-        }
-
-        private byte[] GetReceipt()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-            SqlConnection cn = new SqlConnection(connectionString);
-            cn.Open();
-
-            int length = fupReceipts.PostedFile.ContentLength;
-            byte[] data = new byte[length];
-            fupReceipts.PostedFile.InputStream.Read(data, 0, length);
-
-            return data;
         }
 
         protected void btnAddExpense_Click(object sender, EventArgs e)
@@ -95,10 +80,11 @@ namespace GUI.Consultant
             String description = txtDescription.Text;
             Double amount = Convert.ToDouble(txtAmount.Text);
             String currency = listCurrency.SelectedItem.ToString();
-            int reportID = report.NewReportID();
+            //int reportID = report.NewReportID();
+            string emptyID = "";
 
-            Expense expense = new Expense(location, description, amount, currency, reportID);
-            
+            Expense expense = new Expense(location, description, amount, currency, emptyID);
+
             report.AddExpense(expense);
 
             Session["Report"] = report;
@@ -109,12 +95,28 @@ namespace GUI.Consultant
             ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
             Report report = (Report)Session["Report"];
 
-            if (consultant != null)
+            report.submit();
+            AddReportIDToExpenses();
+            report.submitExpense();
+
+            btnSubmitReport.Enabled = false;
+            lblStatus.Text = "Report submitted successfully. Please close this window.";
+
+        }
+
+        private void AddReportIDToExpenses()
+        {
+            Report report = (Report)Session["Report"];
+            List<Expense> expenses = report.GetExpenses();
+
+            foreach (Expense expense in expenses)
             {
-                consultant.SubmitReportToDatabase(report);
-                btnSubmitReport.Enabled = false;
-                lblStatus.Text = "Report submitted successfully. Please close this window.";
+                //expense.ReportID = report.NewReportID();
+                DatabaseAccess da = new DatabaseAccess();
+                expense.ReportID = report.ReportID;
             }
+
+            Session["Report"] = report;
         }
 
         protected void btnClose_Click(object sender, EventArgs e)
