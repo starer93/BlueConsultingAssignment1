@@ -13,8 +13,20 @@ namespace BlueConsultingBusinessLogic
 {
     public class DatabaseAccess
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-        private SqlConnection connection = new SqlConnection(connectionString);
+        private string connectionString;
+        private SqlConnection connection;
+
+        public DatabaseAccess()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+        }
+
+        public DatabaseAccess(string serverName)
+        {
+            connectionString = ConfigurationManager.ConnectionStrings[serverName].ConnectionString;
+            connection = new SqlConnection(connectionString);
+        }
 
         public DataTable getDataTable(SqlCommand command)
         {
@@ -137,7 +149,7 @@ namespace BlueConsultingBusinessLogic
         public DataTable GetExpensesByReportID(string reportID)
         {
             var connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT all FROM Expenses Where ReportID = @ReportID");
+            SqlCommand command = new SqlCommand("SELECT * FROM Expenses Where ReportID = @ReportID", connection);
             command.Parameters.Add("@ReportID", SqlDbType.Int).Value = reportID;
             var adapter = new SqlDataAdapter(command);
             var resultSet = new DataTable();

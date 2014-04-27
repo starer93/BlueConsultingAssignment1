@@ -60,7 +60,7 @@ namespace BusinessLogicUnitTesting
 
             
             // start transaction
-            DatabaseAccess da = new DatabaseAccess();
+            DatabaseAccess da = new DatabaseAccess("BusinessLogicUnitTesting.Properties.Settings.DATABASEMyConnection");
             using (TransactionScope testTransaction = new TransactionScope())
             {
                 foreach (Expense currentExpense in expenses)

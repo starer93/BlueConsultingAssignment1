@@ -1,0 +1,12 @@
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb

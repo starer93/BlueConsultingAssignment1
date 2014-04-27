@@ -1,6 +1,0 @@
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Release\BlueConsultingBusinessLogic.dll.config
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Release\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Release\BlueConsultingBusinessLogic.pdb
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Release\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Release\BlueConsultingBusinessLogic.dll
-C:\Users\Yu\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Release\BlueConsultingBusinessLogic.pdb

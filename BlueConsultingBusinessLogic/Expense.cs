@@ -50,14 +50,14 @@ namespace BlueConsultingBusinessLogic
 
         public static List<Expense> GetExpensesFromDBByReportID(string reportID)
         {
-            DatabaseAccess da = new DatabaseAccess();
+            DatabaseAccess da = new DatabaseAccess("BusinessLogicUnitTesting.Properties.Settings.DATABASEMyConnection");
             DataTable dataTable = da.GetExpensesByReportID(reportID);
             List<Expense> expenses = new List<Expense>();
 
             foreach (DataRow row in dataTable.Rows)
             {
                 Expense expense = new Expense();
-                expense.Amount = (double)row["Amount"];
+                expense.Amount = Convert.ToInt32(row["Amount"]);
                 expense.Currency = row["Currency"].ToString();
                 expense.Description = row["Description"].ToString();
                 expense.Location = row["Location"].ToString();
