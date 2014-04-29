@@ -3,6 +3,7 @@ C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessL
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+<<<<<<< HEAD
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll.config
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.dll
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BlueConsultingBusinessLogic\bin\Debug\BlueConsultingBusinessLogic.pdb
@@ -54,3 +55,5 @@ C:\Users\11230481\Desktop\FinalProjects\Assignment\BlueConsultingBusinessLogic\b
 C:\Users\11230481\Desktop\FinalProjects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\11230481\Desktop\FinalProjects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.dll
 C:\Users\11230481\Desktop\FinalProjects\Assignment\BlueConsultingBusinessLogic\obj\Debug\BlueConsultingBusinessLogic.pdb
+=======
+>>>>>>> c25f06e9ea4893cd8f6dccf3e9d4740752dd4bb4

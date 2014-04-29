@@ -62,9 +62,15 @@ namespace BusinessLogicUnitTesting
             expenses.Add(expense);
             expenses.Add(expense);
 
+<<<<<<< HEAD
 
             DatabaseAccess da = new DatabaseAccess("BusinessLogicUnitTesting.Properties.Settings.DATABASEMyConnection");
             //start transaction
+=======
+            
+            // start transaction
+            DatabaseAccess da = new DatabaseAccess("BusinessLogicUnitTesting.Properties.Settings.DATABASEMyConnection");
+>>>>>>> c25f06e9ea4893cd8f6dccf3e9d4740752dd4bb4
             using (TransactionScope testTransaction = new TransactionScope())
             {
                 //submit test object to database

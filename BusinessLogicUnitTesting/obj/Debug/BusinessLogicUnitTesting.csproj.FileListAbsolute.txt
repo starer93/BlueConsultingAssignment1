@@ -10,6 +10,7 @@ C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTestin
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
 C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+<<<<<<< HEAD
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
 C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
@@ -86,3 +87,5 @@ C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assign
 C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
 C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
 C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+=======
+>>>>>>> c25f06e9ea4893cd8f6dccf3e9d4740752dd4bb4
