@@ -31,13 +31,22 @@ namespace GUI.Consultant {
         protected global::System.Web.UI.WebControls.Label lblSelectedReportID;
         
         /// <summary>
-        /// txtReportPreview control.
+        /// listViewExpenses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReportPreview;
+        protected global::System.Web.UI.WebControls.ListView listViewExpenses;
+        
+        /// <summary>
+        /// lblReportInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReportInformation;
         
         /// <summary>
         /// btnViewReceipt control.

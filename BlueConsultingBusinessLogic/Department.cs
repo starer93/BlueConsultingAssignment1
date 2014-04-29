@@ -9,50 +9,61 @@ namespace BlueConsultingBusinessLogic
 {
     public class Department
     {
-        private string name;
         private const double MONTHLY_BUDGET = 10000;
         private double remainingBudget = 0;
-        private DatabaseAccess databaseAccess = new DatabaseAccess();
+        internal DatabaseAccess databaseAccess = new DatabaseAccess();
         private List<ConsultantLogic> consultants = new List<ConsultantLogic>();
         private List<Report> reports = new List<Report>();
-
-        public string Name 
-        {
-            get
-            {
-                return name;
-            }
-        }
+        public string Name {get; private set;}
         
+        //Initialization ---------------------------------
+
         public Department(int index)
         {
             remainingBudget = MONTHLY_BUDGET;
             switch (index)
             {
-                case 0: name = "State Services"; break;
-                case 1: name = "Logistics Services"; break;
-                case 2: name = "Higher Education"; break;
-                default: name = "none"; break;
+                case 0: Name = "State Services"; break;
+                case 1: Name = "Logistics Services"; break;
+                case 2: Name = "Higher Education"; break;
+                default: Name = "None"; break;
             }
+            fillReports();
+        }
+
+        public Department(int index, DatabaseAccess databaseAccess)
+        {
+            remainingBudget = MONTHLY_BUDGET;
+            switch (index)
+            {
+                case 0: Name = "State Services"; break;
+                case 1: Name = "Logistics Services"; break;
+                case 2: Name = "Higher Education"; break;
+                default: Name = "None"; break;
+            }
+            this.databaseAccess = databaseAccess;
             fillReports();
         }
 
         public Department(string departmentName)
         {
-            name = departmentName;
+            Name = departmentName;
             fillReports();
         }
 
         private void fillReports()
         {
-            DataTable dataTable = databaseAccess.getDepartmentReports(name);
+            DataTable dataTable = databaseAccess.getDepartmentReports(Name);
             foreach (DataRow row in dataTable.Rows)
             {
                 string id = row["Id"].ToString();
                 Report report = new Report(id);
+                report.fillReport();
                 reports.Add(report);
             }
         }
+
+        //Expense calculation ----------------------------
 
         public double TotalExpense(string month, string year)
         {
@@ -60,7 +71,7 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Report report in filteredReport)
             {
-                if (report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
+                if (IsApproved(report))
                 {
                     sum += report.calculateExpenseInAUD();
                 }
@@ -68,19 +79,12 @@ namespace BlueConsultingBusinessLogic
             return sum;
         }
 
-        public int numberOfExpenses()
+        private bool IsApproved(Report report)
         {
-            int numberOfExpenses = 0;
-            foreach (Report report in reports)
-            {
-                if(report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff"))
-                {
-                    numberOfExpenses += report.GetExpenses().Count;
-                }
-            }
-
-            return numberOfExpenses;
+            return report.ReportStatus.Equals("ApprovedByDepartmentSupervisor") || report.ReportStatus.Equals("ApprovedByAccountStaff");
         }
+
+        //Report filters --------------------------------
 
         public List<Report> getDepartmentReports(string month, string year, string status)
         {
@@ -102,13 +106,19 @@ namespace BlueConsultingBusinessLogic
             List<Report> newReports = new List<Report>();
             foreach (Report report in listedReport)
             {
-                if (report.ReportStatus.Equals(Report.ReportStatuses.SubmittedByConsultant.ToString()) || report.ReportStatus.Equals(Report.ReportStatuses.RejectedByAccountStaff.ToString()))
+                if (IsSubmittedOrRejected(report))
                 {
                     newReports.Add(report);
                 }
             }
-            listedReport = filterReport(listedReport, month, year);
             return newReports;
+        }
+
+        private bool IsSubmittedOrRejected(Report report)
+        {
+            bool isSubmittedByConsultant = report.ReportStatus.Equals(Report.ReportStatuses.SubmittedByConsultant.ToString());
+            bool isRejectedByAccountStaff = report.ReportStatus.Equals(Report.ReportStatuses.RejectedByAccountStaff.ToString());
+            return isSubmittedByConsultant || isRejectedByAccountStaff;
         }
 
         private List<Report> filterReport(List<Report> originalReport, string month, string year)
@@ -122,15 +132,11 @@ namespace BlueConsultingBusinessLogic
                     filteredReport.Add(report);
                 }
             }
-            int i = originalReport.Count;
-            int s = originalReport.Count;
+
             return filteredReport;
         }
 
-        public string getName()
-        {
-            return name;
-        }
+        //Budgeting -------------------------------------
 
         public double getTotalBudget()
         {
@@ -145,21 +151,12 @@ namespace BlueConsultingBusinessLogic
 
         public bool willBeOverBudget(Report report)
         {
-            return (remainingBudget + report.calculateExpenseInAUD()) > MONTHLY_BUDGET;
+            return (remainingBudget < report.calculateExpenseInAUD());
         }
 
-        //Search a report based on the report ID
-        public Report getReport(string reportID)
+        private bool isApproved(string status)
         {
-            Report searchedReport = null;
-            foreach (Report report in reports)
-            {
-                if (report.ReportID == reportID)
-                {
-                    searchedReport = report;
-                }
-            }
-            return searchedReport;
+            return status.Equals(Report.ReportStatuses.ApprovedByAccountStaff.ToString()) || status.Equals(Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString());
         }
 
         public double getTotalExpense()
@@ -167,7 +164,10 @@ namespace BlueConsultingBusinessLogic
             double sum = 0;
             foreach (Report report in reports)
             {
-                sum += report.calculateExpenseInAUD();
+                if (isApproved(report.ReportStatus))
+                {
+                    sum += report.calculateExpenseInAUD();
+                }
             }
             return sum;
         }

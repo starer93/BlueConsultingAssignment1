@@ -13,33 +13,6 @@ namespace GUI.Account_Staff {
     public partial class AccountStaffMainGUI {
         
         /// <summary>
-        /// pan1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pan1;
-        
-        /// <summary>
-        /// DropDownListMonth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListMonth;
-        
-        /// <summary>
-        /// DropDownListYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListYear;
-        
-        /// <summary>
         /// Chart1 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +29,15 @@ namespace GUI.Account_Staff {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart ChartTotal;
+        
+        /// <summary>
+        /// labRemainBudget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labRemainBudget;
         
         /// <summary>
         /// Panel2 control.
@@ -112,12 +94,48 @@ namespace GUI.Account_Staff {
         protected global::System.Web.UI.WebControls.Label LabelDate;
         
         /// <summary>
-        /// ListViewReport control.
+        /// btnReceipt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewReport;
+        protected global::System.Web.UI.WebControls.Button btnReceipt;
+        
+        /// <summary>
+        /// btnShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShow;
+        
+        /// <summary>
+        /// ListViewExpense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListViewExpense;
+        
+        /// <summary>
+        /// ButtonApprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonApprove;
+        
+        /// <summary>
+        /// ButtonReject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonReject;
     }
 }

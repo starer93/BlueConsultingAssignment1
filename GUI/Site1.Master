@@ -8,24 +8,29 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="BlueConsulting.css" rel="stylesheet" type="text/css" />
-
 </head>
-
-
 <body>
     <form id="form1" runat="server">
         <div id="top">
-            Blue Consulting
-                <br />
+            <table>
+                <tr>
+                    <td style="width: 100%; text-align: left">BLUE CONSULTING</td>
+                    <td>
+                        <asp:Button ID="btnRefresh" runat="server" Text="Refresh" Style="margin-right: 10px; margin-left: 0px;" OnClick="btnRefresh_Click" Width="100px" />
+                    </td>
+                    <td style="width: 100%; text-align: right">
+                        <asp:Button ID="btnLogout" runat="server" Text="Logout" Style="margin-right: 10px; margin-left: 0px;" OnClick="btnLogout_Click" Width="100px" />
+                    </td>
+                </tr>
+            </table>
             <br />
         </div>
 
-        <div>
-
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <div id="middle">
+            <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
-
         </div>
+
 
         <div id="bottom">
             <asp:Label ID="Label2" runat="server" Text="Date: "></asp:Label>

@@ -13,8 +13,20 @@ namespace BlueConsultingBusinessLogic
 {
     public class DatabaseAccess
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-        private SqlConnection connection = new SqlConnection(connectionString);
+        private string connectionString;
+        private SqlConnection connection;
+
+        public DatabaseAccess()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+        }
+
+        public DatabaseAccess(string serverName)
+        {
+            connectionString = ConfigurationManager.ConnectionStrings[serverName].ConnectionString;
+            connection = new SqlConnection(connectionString);
+        }
 
         public DataTable getDataTable(SqlCommand command)
         {
@@ -26,12 +38,14 @@ namespace BlueConsultingBusinessLogic
             return resultSet;
         }
 
-        public void updateReport(string newStatus, string oldStatus)
+        public void updateReport(string Id, string newStatus)
         {
-            var cmd = new SqlCommand("UPDATE reports SET status = @newStatus where status = @oldStatus", connection);
-            cmd.Parameters.AddWithValue("@oldstatus", oldStatus);
-            cmd.Parameters.AddWithValue("@newStatus", newStatus);
+            connection.Open();
+            var cmd = new SqlCommand("UPDATE Reports SET ReportStatus = @newStatus where Id = @Id", connection);
+            cmd.Parameters.Add("@Id", SqlDbType.NVarChar).Value = Id;
+            cmd.Parameters.Add("@newStatus", SqlDbType.NVarChar).Value = newStatus;
             cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
         public string getDepartmentName(string username)
@@ -134,10 +148,19 @@ namespace BlueConsultingBusinessLogic
 
         }
 
+        // changed
+        public void updateSupervisorName(string reportID, string supervisorName)
+        {
+            var updateCommand = new SqlCommand("Update Reports Set DepartmentSupervisorID = @SupervisorName where Id = @reportID", connection);
+            updateCommand.Parameters.Add("@reportID", SqlDbType.NVarChar).Value = reportID;
+            updateCommand.Parameters.Add("@SupervisorName", SqlDbType.NVarChar).Value = supervisorName;
+            updateCommand.ExecuteNonQuery();
+        }
+
         public DataTable GetExpensesByReportID(string reportID)
         {
             var connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT all FROM Expenses Where ReportID = @ReportID");
+            SqlCommand command = new SqlCommand("SELECT * FROM Expenses Where ReportID = @ReportID", connection);
             command.Parameters.Add("@ReportID", SqlDbType.Int).Value = reportID;
             var adapter = new SqlDataAdapter(command);
             var resultSet = new DataTable();
@@ -146,7 +169,15 @@ namespace BlueConsultingBusinessLogic
             connection.Close();
             return resultSet;
         }
+
+        public DataTable loadReportForDepartment(string username)
+        {
+
+            SqlCommand command = new SqlCommand("Select Id From Reports where DepartmentSupervisorID = @Id ");
+            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = username;
+            DataTable dt = getDataTable(command);
+
+            return dt;
+        }
     }
-
-
 }

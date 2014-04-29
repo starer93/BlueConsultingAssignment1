@@ -31,8 +31,9 @@ namespace GUI.Consultant
         }
 
         private void LoadReports(ConsultantLogic consultant)
-        {           
+        {
             ShowAllReports(consultant.GetReports());
+
             Session["Consultant"] = consultant;
         }
 
@@ -59,22 +60,17 @@ namespace GUI.Consultant
             {
                 selectedReport = listboxReports.SelectedItem.ToString();
                 reportID = selectedReport.Substring(0, selectedReport.IndexOf(",")); //get first set of char as reportID
-                Session["ReportID"] = reportID;
+                ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
+
+                Session["Report"] = new Report(reportID);
+                OpenShowReportsForm();
             }
 
-            OpenShowReportsForm();
         }
 
         private void OpenShowReportsForm()
         {
             Response.Write("<script language='javascript'> window.open('ShowReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            FormsAuthentication.SignOut();
-            Response.Redirect("~/Login.aspx");
         }
 
         protected void rblReportFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,8 +86,7 @@ namespace GUI.Consultant
                     case 0: ShowAllReports(reports); break;
                     case 1: FilterReports(Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString()); break;
                     case 2: FilterReports(Report.ReportStatuses.ApprovedByAccountStaff.ToString()); break;
-                    case 3: FilterReports(Report.ReportStatuses.RejectedByDepartmentSupervisor.ToString()); break;
-                    case 4: FilterReports(Report.ReportStatuses.RejectedByAccountStaff.ToString()); break;
+                    case 3: FilterReports(Report.ReportStatuses.SubmittedByConsultant.ToString()); break;
                     default: ShowAllReports(reports); break;
                 }
             }

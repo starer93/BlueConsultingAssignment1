@@ -67,10 +67,12 @@
     <Content Include="Consultant\ConsultantMainGUI.aspx" />
     <Content Include="Consultant\ShowReport.aspx" />
     <Content Include="Consultant\SubmitReport.aspx" />
+    <Content Include="Consultant\UploadReceipt.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DepartmentSupervisor\DepartmentSupervisorMainGUI.aspx" />
     <Content Include="DepartmentSupervisor\ViewReport.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Receipt.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +104,13 @@
     <Compile Include="Consultant\SubmitReport.aspx.designer.cs">
       <DependentUpon>SubmitReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Consultant\UploadReceipt.aspx.cs">
+      <DependentUpon>UploadReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultant\UploadReceipt.aspx.designer.cs">
+      <DependentUpon>UploadReceipt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +140,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipt.aspx.cs">
+      <DependentUpon>Receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Receipt.aspx.designer.cs">
+      <DependentUpon>Receipt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -25,35 +25,8 @@ namespace GUI.Consultant
             {
                 Report report = new Report();
                 Session["Report"] = report;
+
             }
-        }
-
-        protected void btnCreateReport_Click(object sender, EventArgs e)
-        {
-            CreateReport();
-            EnableExpenseFields();
-            //enable expenses input fields
-        }
-
-        private void EnableExpenseFields()
-        {
-            txtAmount.Enabled = true;
-            txtDescription.Enabled = true;
-            txtLocation.Enabled = true;
-            listCurrency.Enabled = true;
-            btnAddExpense.Enabled = true;
-        }
-
-        private void CreateReport()
-        {
-            Report report = (Report)Session["Report"];
-
-            report.DepartmentSupervisorID = "";
-            report.ConsultantID = User.Identity.Name;
-            report.Date = lblDate.Text;
-            report.ReportStatus = Report.ReportStatuses.SubmittedByConsultant.ToString();
-            report.Receipt = report.GetReceipt(fupReceipts.PostedFile);
-            Session["Report"] = report;
         }
 
         protected void btnAddExpense_Click(object sender, EventArgs e)
@@ -68,55 +41,72 @@ namespace GUI.Consultant
             {
                 listboxExpenses.Items.Add(expense.PrintExpense());
             }
+            btnAddReceipt.Enabled = true;
+            ClearExpenseFields();
+        }
 
-            btnSubmitReport.Enabled = true;
+        private void ClearExpenseFields()
+        {
+            txtAmount.Text = "";
+            txtDescription.Text = "";
+            txtLocation.Text = "";
         }
 
         private void CreateExpense()
         {
-            Report report = (Report)Session["Report"];
+            if (checkTextField())
+            {
+                Report report = (Report)Session["Report"];
+                String location = txtLocation.Text;
+                String description = txtDescription.Text;
+                String currency = listCurrency.SelectedItem.ToString();
+                string emptyID = "";
+                if (isValidNumber())
+                {
+                    Double amount = Convert.ToDouble(txtAmount.Text);
+                    Expense expense = new Expense(location, description, amount, currency, emptyID);
+                    report.AddExpense(expense);
+                }
+                else
+                {
+                    showErrorMessage("Amount must be number");
+                }
+                Session["Report"] = report;
+            }
+            else
+            {
+                showErrorMessage("Please fill all fields");
+            }
+        }
 
-            String location = txtLocation.Text;
-            String description = txtDescription.Text;
-            Double amount = Convert.ToDouble(txtAmount.Text);
-            String currency = listCurrency.SelectedItem.ToString();
-            //int reportID = report.NewReportID();
-            string emptyID = "";
-
-            Expense expense = new Expense(location, description, amount, currency, emptyID);
-
-            report.AddExpense(expense);
-
-            Session["Report"] = report;
+        private void showErrorMessage(string message)
+        {
+            labErrorMessage.Text = message;
+            labErrorMessage.ForeColor = Color.Red;
+            labErrorMessage.Visible = true;
         }
 
         protected void btnSubmitReport_Click(object sender, EventArgs e)
         {
             ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
             Report report = (Report)Session["Report"];
-
-            report.submit();
-            AddReportIDToExpenses();
-            report.submitExpense();
-
-            btnSubmitReport.Enabled = false;
-            lblStatus.Text = "Report submitted successfully. Please close this window.";
-
+            Response.Write("<script language='javascript'> window.open('UploadReceipt.aspx','width=200px,height=100px'); </script>");
         }
 
-        private void AddReportIDToExpenses()
+        private Boolean checkTextField()
         {
-            Report report = (Report)Session["Report"];
-            List<Expense> expenses = report.GetExpenses();
-
-            foreach (Expense expense in expenses)
+            if (txtDescription.Text.Trim().Length == 0 || txtLocation.Text.Trim().Length == 0)
             {
-                //expense.ReportID = report.NewReportID();
-                DatabaseAccess da = new DatabaseAccess();
-                expense.ReportID = report.ReportID;
+                return false;
             }
+            return true;
+        }
 
-            Session["Report"] = report;
+        private Boolean isValidNumber()
+        {
+            string Str = txtAmount.Text.Trim();
+            double Num;
+            return double.TryParse(Str, out Num);
         }
 
         protected void btnClose_Click(object sender, EventArgs e)

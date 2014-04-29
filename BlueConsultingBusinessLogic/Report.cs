@@ -21,8 +21,7 @@ namespace BlueConsultingBusinessLogic
         public String ReportStatus { get; set; }
         public String Date { get; set; }
         public byte[] Receipt { get; set; } //this needs to be a byte
-        private const double CNY_CONVERTION_RATE = 0.17;
-        private const double EUR_CONVERTION_RATE = 1.48;
+
 
         public enum ReportStatuses
         {
@@ -50,14 +49,19 @@ namespace BlueConsultingBusinessLogic
             SqlCommand command = new SqlCommand("Select * From Reports where Id = @id");
             command.Parameters.Add("@id", SqlDbType.VarChar).Value = ReportID;
             DataTable dataTable = databaseAccess.getDataTable(command);
-            DataRow d = dataTable.Rows[0];
-            ReportStatus = d["ReportStatus"].ToString();
-            Date = d["Date"].ToString();
+            DataRow row = dataTable.Rows[0];
+            ReportStatus = row["ReportStatus"].ToString();
+            Date = row["Date"].ToString();
+            if (row["Receipt"] != DBNull.Value)
+            {
+                Receipt = (byte[])row["Receipt"];
+            }
+            DepartmentSupervisorID = row["DepartmentSupervisorID"].ToString();
         }
 
         public String PrintReport()
         {
-            return String.Format("{0},{1},{2},{3}", ReportID, ReportStatus, Date, ConsultantID);
+            return String.Format("{0}, {1}, {2}", ReportID, ReportStatus, Date);
         }
 
         public void AddExpense(Expense expense)
@@ -71,8 +75,6 @@ namespace BlueConsultingBusinessLogic
             command.Parameters.Add("@Id", SqlDbType.VarChar).Value = ReportID;
 
             DataTable dataTable = databaseAccess.getDataTable(command);
-            expenses = new List<Expense>();
-
             foreach (DataRow d in dataTable.Rows)
             {
                 Expense expense = new Expense();
@@ -80,9 +82,8 @@ namespace BlueConsultingBusinessLogic
                 expense.Location = d["Location"].ToString();
                 expense.Description = d["Description"].ToString();
                 expense.Currency = d["Currency"].ToString();
-                expense.Amount = Convert.ToInt32(d["Amount"].ToString());
+                expense.Amount = Convert.ToDouble(d["Amount"].ToString());
                 expense.ReportID = d["ReportID"].ToString();
-
                 expenses.Add(expense);
             }
         }
@@ -97,7 +98,18 @@ namespace BlueConsultingBusinessLogic
             return expenses.Count;
         }
 
-        public double calculateTotalExpenses()
+        public double calculateExpenseInAUD()
+        {
+            double sum = 0;
+            foreach (Expense expense in expenses)
+            {
+                sum += expense.calculateExpenseInAUD();
+            }
+
+            return sum;
+        }
+
+        public double getTotalReportAmount()
         {
             double sum = 0;
             foreach (Expense expense in expenses)
@@ -116,25 +128,6 @@ namespace BlueConsultingBusinessLogic
             //FileStream fileStream = new FileStream(filePath, FileMode.Open);
             file.InputStream.Read(data, 0, length);
             return data;
-        }
-
-        public double calculateExpenseInAUD()
-        {
-            double sum = 0;
-            foreach (Expense expense in expenses)
-            {
-                double aud = expense.getAmount();
-                if (expense.Currency.Equals("CNY"))
-                {
-                    aud = aud * CNY_CONVERTION_RATE;
-                }
-                else if (expense.Currency.Equals("EUR"))
-                {
-                    aud = aud * EUR_CONVERTION_RATE;
-                }
-                sum += aud;
-            }
-            return sum;
         }
 
         public void submit()

@@ -6,60 +6,44 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BlueConsultingBusinessLogic;
+using System.Drawing;
 
 namespace GUI.Account_Staff
 {
     public partial class AccountStaffMainGUI : System.Web.UI.Page
     {
-        AccountStaffLogic accountStaff = new AccountStaffLogic();
-        DataTable dataTable;
-        List<Report> reports;
+        private AccountStaffLogic accountStaff = new AccountStaffLogic();
+        private DataTable dataTable;
+        private List<Report> reports;
+        private string month, year;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             initData();
             if (!IsPostBack) //if page loads for the first time
             {
+                fillReportId();
                 loadReportDropBox();
-                fillListBox();
-                ListBoxReport.SelectedIndex = 0;
-                fillListExpense(0);
-                updateReport(ListBoxReport.SelectedItem.ToString());
             }
         }
-
-        protected void Chart1_Load(object sender, EventArgs e)
+        private void initData()
         {
-            Chart1.Titles.Add("Monthly Budget - Supervisor");
-            string seriesName = "Budget";
-            Chart1.Series.Add(seriesName);
-            Chart1.Series[seriesName].BorderWidth = 2;
-            Chart1.Series[seriesName].IsValueShownAsLabel = true;
-            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
-            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
-            List<DepartmentSupervisorLogic> supervisors = accountStaff.getSupervisor();
-
-            foreach (DepartmentSupervisorLogic supervisor in supervisors)
-            {
-                string columnName = supervisor.Username;
-                double YValue = supervisor.getApproveAmount();
-                Chart1.Series[seriesName].Points.AddXY(columnName, YValue);
-            }
-
+            reports = accountStaff.getReports();
+            month = DateTime.Now.ToString("MM");
+            year = DateTime.Now.ToString("yyyy");
+            dataTable = new DataTable();
+            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("amount");
+            dataTable.Columns.Add("description");
+            dataTable.Columns.Add("location");
+            dataTable.Columns.Add("currency");
         }
 
-        private void loadChartDropBox()
+        private void fillReportId()
         {
-            List<Report> submitReports = accountStaff.getReports();
-            List<string> months = getListItems(submitReports, 7, 2);
-            List<string> years = getListItems(submitReports, 4, 4);
-            foreach (string month in months)
+            foreach (Report report in reports)
             {
-                DropDownListMonth.Items.Add(new ListItem(month));
-            }
-            foreach (string year in years)
-            {
-                DropDownListYear.Items.Add(new ListItem(year));
+                ListBoxReport.Items.Add(report.ReportID);
             }
         }
 
@@ -70,12 +54,10 @@ namespace GUI.Account_Staff
             List<string> years = getListItems(submitReports, 4, 4);
             foreach (string month in months)
             {
-                DropDownListMonth.Items.Add(new ListItem(month));
                 DropDownListMonthReport.Items.Add(new ListItem(month));
             }
             foreach (string year in years)
             {
-                DropDownListYear.Items.Add(new ListItem(year));
                 DropDownListYearReport.Items.Add(new ListItem(year));
             }
         }
@@ -107,13 +89,24 @@ namespace GUI.Account_Staff
             return false;
         }
 
-        private void fillListBox()
+        protected void Chart1_Load(object sender, EventArgs e)
         {
-            ListBoxReport.Items.Clear();
-            foreach (Report report in reports)
+            Chart1.Titles.Add("Monthly Budget - Supervisor");
+            string seriesName = "Budget";
+            Chart1.Series.Add(seriesName);
+            Chart1.Series[seriesName].BorderWidth = 2;
+            Chart1.Series[seriesName].IsValueShownAsLabel = true;
+            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+            List<DepartmentSupervisorLogic> supervisors = accountStaff.getSupervisor();
+
+            foreach (DepartmentSupervisorLogic supervisor in supervisors)
             {
-                ListBoxReport.Items.Add(report.ReportID);
+                string columnName = supervisor.Username;
+                double YValue = supervisor.getApproveAmount();
+                Chart1.Series[seriesName].Points.AddXY(columnName, YValue);
             }
+
         }
 
         private void fillListExpense(int index)
@@ -127,35 +120,39 @@ namespace GUI.Account_Staff
             }
         }
 
-        private void initData()
-        {
-            reports = accountStaff.getReports();
-            dataTable = new DataTable();
-            dataTable.Columns.Add("ID");
-            dataTable.Columns.Add("amount");
-            dataTable.Columns.Add("description");
-            dataTable.Columns.Add("location");
-            dataTable.Columns.Add("currency");
-        }
-
-        protected void ListBoxReport_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = ListBoxReport.SelectedItem.ToString();
-            updateTable(selectedItem);
-            updateReport(selectedItem);
-        }
-
         private void updateReport(string reportID)
         {
+            Report selectedReport = new Report();
             foreach (Report report in reports)
             {
                 if (report.ReportID.Equals(reportID))
                 {
-                    LabelAmount.Text = report.calculateTotalExpenses().ToString();
+                    LabelAmount.Text = report.getTotalReportAmount().ToString();
                     LabelDate.Text = report.Date;
+                    selectedReport = report;
                 }
             }
+
+            if (isOverBudget(selectedReport))
+            {
+                Panel2.BackColor = Color.Red;
+            }
+            else
+            {
+                Panel2.BackColor = Color.White;
+            }
         }
+
+        private Boolean isOverBudget(Report report)
+        {
+            string supverId = report.DepartmentSupervisorID;
+            DepartmentSupervisorLogic temp = new DepartmentSupervisorLogic(supverId);
+            Department department = temp.Department;
+            string month = DropDownListMonthReport.SelectedValue.ToString();
+            string year = DropDownListYearReport.SelectedValue.ToString();
+            return department.getRemainingBudget(month, year) < report.calculateExpenseInAUD();
+        }
+
         private void updateTable(string reportID)
         {
             List<Expense> expenses = new List<Expense>();
@@ -177,13 +174,8 @@ namespace GUI.Account_Staff
                 dataTable.Rows.Add(index, expense.Amount, expense.Description, expense.Location, expense.Currency);
                 index++;
             }
-            ListViewReport.DataSource = dataTable;
-            ListViewReport.DataBind();
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            ListViewExpense.DataSource = dataTable;
+            ListViewExpense.DataBind();
         }
 
         protected void ChartTotal_Load(object sender, EventArgs e)
@@ -195,15 +187,52 @@ namespace GUI.Account_Staff
             ChartTotal.Series[seriesName].IsValueShownAsLabel = true;
             ChartTotal.ChartAreas["ChartArea2"].AxisX.MajorGrid.Enabled = false;
             ChartTotal.ChartAreas["ChartArea2"].AxisY.MajorGrid.Enabled = false;
-            List<Department> departments= accountStaff.getDepartments();
-            int i = departments.Count;
+            List<Department> departments = accountStaff.getDepartments();
+            double totalApprovedBudget = 0;
             foreach (Department department in departments)
             {
                 string columnName = department.Name;
                 double YValue = department.getTotalExpense();
+                totalApprovedBudget += YValue;
                 ChartTotal.Series[seriesName].Points.AddXY(columnName, YValue);
+            }
+            double remainBudget = 30000 - totalApprovedBudget;
+            labRemainBudget.Text = "Remaining Monthly Budget: " + remainBudget;
+        }
+
+        protected void ButtonApprove_Click(object sender, EventArgs e)
+        {
+            string reportId = ListBoxReport.SelectedValue.ToString();
+            accountStaff.update(reportId, Report.ReportStatuses.ApprovedByAccountStaff.ToString());
+        }
+
+        protected void ButtonReject_Click(object sender, EventArgs e)
+        {
+            string reportId = ListBoxReport.SelectedValue.ToString();
+            accountStaff.update(reportId, Report.ReportStatuses.RejectedByAccountStaff.ToString());
+        }
+
+        protected void btnReceipt_Click(object sender, EventArgs e)
+        {
+            Report report = new Report(ListBoxReport.SelectedValue.ToString());
+            byte[] receipt = report.Receipt;
+            if (receipt != null)
+            {
+                Session["Receipt"] = receipt;
+                Response.Write("<script language = 'javascript'> window.open('../Receipt.aspx'); </script>");
+            }
+            else
+            {
+                //
             }
         }
 
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            string selectedItem = ListBoxReport.SelectedItem.ToString();
+            Session["Report"] = new Report(selectedItem);
+            updateTable(selectedItem);
+            updateReport(selectedItem);
+        }
     }
 }

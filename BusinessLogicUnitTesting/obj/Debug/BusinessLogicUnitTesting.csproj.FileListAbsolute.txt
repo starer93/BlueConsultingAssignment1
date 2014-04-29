@@ -1,0 +1,88 @@
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\GitHub\BlueConsultingAssignment1\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\11230481\Desktop\BlueConsultingAssignment1-master\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\11230481\Desktop\New folder\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\11230481\Desktop\New folder\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Downloads\New folder\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\11230481\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Desktop\AssignmentOutOfMemoryFixed\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Desktop\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\DATABASE.MDF
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\DATABASE_log.ldf
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.config
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.pdb
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.CodeAnalysisLog.xml
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BusinessLogicUnitTesting.dll.lastcodeanalysissucceeded
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.dll
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\GUI.dll
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\BlueConsultingBusinessLogic.pdb
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\bin\Debug\GUI.pdb
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.dll
+C:\Users\Tuan\Documents\EnterpriseC#Autumn2014\FinalAssignmentOneProjects\Assignment\BusinessLogicUnitTesting\obj\Debug\BusinessLogicUnitTesting.pdb

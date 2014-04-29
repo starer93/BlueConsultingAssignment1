@@ -16,7 +16,11 @@ namespace GUI.DepartmentSupervisor
         {
             loadUser();
             updatePage();
-            showAllReports();
+
+            if (!IsPostBack)
+            {
+                populateListBox();
+            }
         }
 
         private void loadUser()
@@ -31,7 +35,16 @@ namespace GUI.DepartmentSupervisor
             lblTotalBudget.Text = "$" + departmentSupervisor.Department.getTotalBudget();
             lblRemainingBudget.Text = "$" + departmentSupervisor.Department.getRemainingBudget(ddlMonth.SelectedValue, ddlYear.SelectedValue);
             lblExpensesApproved.Text = "$" + departmentSupervisor.Department.TotalExpense(ddlMonth.SelectedValue, ddlYear.SelectedValue);
-            lblNumberOfExpensesApproved.Text = "" + departmentSupervisor.Department.numberOfExpenses();
+        }
+
+        private void showAllReports()
+        {
+            Department department = departmentSupervisor.Department;
+            List<Report> reports = department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue); 
+            foreach (Report report in reports)
+            {
+                listBoxReports.Items.Add(report.PrintReport());
+            }
         }
 
         protected void ddlMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,39 +74,19 @@ namespace GUI.DepartmentSupervisor
             }
         }
 
-        private void showAllReports()
-        {
-            lblReportsDescription.Text = "All Reports";
-            Department department = departmentSupervisor.Department;
-            List<Report> reports = department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue);
-            foreach (Report report in reports)
-            {
-                listBoxReports.Items.Add(report.PrintReport());
-            }
-        }
         private void showReports(string text, string status)
         {
-            lblReportsDescription.Text = text;
             Department department = departmentSupervisor.Department;
             List<Report> reports = department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue, status);
+
             foreach (Report report in reports)
             {
                 listBoxReports.Items.Add(report.PrintReport());
             }
         }
-//        private void showAllReports()
-//        {
-//            lblReportsDescription.Text = "All Reports";
-//            foreach (Report report in departmentSupervisor.Department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue, Report.ReportStatuses.
-//))
-//            {
-//                listBoxReports.Items.Add(report.PrintReport());
-//            }
-//        }
 
         private void showPendingReports()
         {
-            lblReportsDescription.Text = "All Reports";
             Department department = departmentSupervisor.Department;
             List<Report> reports = department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue, Report.ReportStatuses.SubmittedByConsultant.ToString());
             foreach (Report report in reports)
@@ -104,9 +97,9 @@ namespace GUI.DepartmentSupervisor
 
         private void showRejectedByAccountStaffReports()
         {
-            lblReportsDescription.Text = "All Reports";
             Department department = departmentSupervisor.Department;
             List<Report> reports = department.getDepartmentReports(ddlMonth.SelectedValue, ddlYear.SelectedValue, Report.ReportStatuses.SubmittedByConsultant.ToString());
+            
             foreach (Report report in reports)
             {
                 listBoxReports.Items.Add(report.PrintReport());
@@ -119,13 +112,13 @@ namespace GUI.DepartmentSupervisor
             {
                 string selectedReport = listBoxReports.SelectedItem.Value;
                 string reportID = selectedReport.Substring(0, selectedReport.IndexOf(","));
-                Report report = departmentSupervisor.Department.getReport(reportID);
+
+                Report report = new Report(reportID);
                 Session["Report"] = report;
                 Session["Department Supervisor"] = departmentSupervisor;
-                Response.Write("<script language='javascript'> window.open('ViewReport.aspx','','width=500,Height=500,fullscreen=0,location=0,scrollbars=1,menubar=1,toolbar=1'); </script>");
-                populateListBox();
+
+                Response.Write("<script language='javascript'> window.open('ViewReport.aspx'); </script>");
             }
         }
-
     }
 }

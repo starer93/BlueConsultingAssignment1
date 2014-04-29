@@ -17,6 +17,8 @@ namespace BlueConsultingBusinessLogic
         public String Currency { get; set; }
         public string ReportID { get; set; }
         public enum Currencies { AUD, CNY, EUR }; //CHANGE
+        internal const double CNY_CONVERTION_RATE = 0.17;
+        internal const double EUR_CONVERTION_RATE = 1.48;
 
         public Expense(String location, String description, double amount, String currency, string reportID)
         {
@@ -34,12 +36,7 @@ namespace BlueConsultingBusinessLogic
 
         public String PrintExpense()
         {
-            return String.Format("{0}, {1}, {2}, {3}, {4}\n", Location, Description, Amount, Currency, ReportID);
-        }
-
-        public double getAmount()
-        {
-            return Amount;
+            return String.Format("{0}, {1}, {2}, ${3}, {4}\n", Location, Description, Amount, calculateExpenseInAUD(), ReportID);
         }
 
         public void submit()
@@ -50,14 +47,14 @@ namespace BlueConsultingBusinessLogic
 
         public static List<Expense> GetExpensesFromDBByReportID(string reportID)
         {
-            DatabaseAccess da = new DatabaseAccess();
+            DatabaseAccess da = new DatabaseAccess("BusinessLogicUnitTesting.Properties.Settings.DATABASEMyConnection");
             DataTable dataTable = da.GetExpensesByReportID(reportID);
             List<Expense> expenses = new List<Expense>();
 
             foreach (DataRow row in dataTable.Rows)
             {
                 Expense expense = new Expense();
-                expense.Amount = (double)row["Amount"];
+                expense.Amount = Convert.ToInt32(row["Amount"]);
                 expense.Currency = row["Currency"].ToString();
                 expense.Description = row["Description"].ToString();
                 expense.Location = row["Location"].ToString();
@@ -66,6 +63,21 @@ namespace BlueConsultingBusinessLogic
                 expenses.Add(expense);
             }
             return expenses;
+        }
+
+        public double calculateExpenseInAUD()
+        {
+
+            if (Currency.Equals("CNY"))
+            {
+                return Amount * CNY_CONVERTION_RATE;
+            }
+            else if (Currency.Equals("EUR"))
+            {
+                return Amount * EUR_CONVERTION_RATE;
+            }
+            else
+                return Amount;
         }
     }
 }

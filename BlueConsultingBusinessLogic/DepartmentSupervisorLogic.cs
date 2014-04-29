@@ -11,74 +11,53 @@ namespace BlueConsultingBusinessLogic
 {
     public class DepartmentSupervisorLogic
     {
-        private string username;
-        private Department department;
         private DatabaseAccess databaseAccess = new DatabaseAccess();
         List<Report> reports = new List<Report>();
-
-        public string Username 
-        {
-            get
-            {
-                return username;
-            }
-        }
-        public Department Department 
-        {
-            get
-            {
-                return department;
-            }
-        }
+        public string Username { get; private set; }
+        public Department Department { get; private set; }
 
         public DepartmentSupervisorLogic(string username)
         {
-            this.username = username;
+            this.Username = username;
             loadDepartment();
-            loadPassReport();
+            fillReport();
         }
 
         private void loadDepartment()
         {
-            department = new Department(databaseAccess.getDepartmentName(username));
+            Department = new Department(databaseAccess.getDepartmentName(Username));
         }
 
         public double getApproveAmount()
         {
             double sum = 0;
+            String approved = Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString();
+            String finalApproved = Report.ReportStatuses.ApprovedByAccountStaff.ToString();
+            
             foreach (Report report in reports)
             {
-                if (report.ReportStatus.Equals(Report.ReportStatuses.ApprovedByDepartmentSupervisor.ToString()))
+                if (report.ReportStatus.Equals(approved) || report.ReportStatus.Equals(finalApproved))
                 {
-                    sum += report.calculateTotalExpenses();
+                    sum += report.calculateExpenseInAUD();
                 }
             }
             return sum;
         }
 
-        private void loadPassReport()
+        public void changeReportStatus(string Id, string status)
         {
-            SqlCommand command = new SqlCommand("Select Id From Reports where DepartmentSupervisorID = @Id ");
-            command.Parameters.Add("@Id", SqlDbType.VarChar).Value = username;
-            DataTable dt = databaseAccess.getDataTable(command);
+            databaseAccess.changeReportStatus(Id, status);
+            databaseAccess.updateSupervisorName(Id, Username); 
+        }
+
+        private void fillReport()
+        {
+            DataTable dt = databaseAccess.loadReportForDepartment(Username);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 string id = dt.Rows[i]["Id"].ToString();
                 reports.Add(new Report(id));
             }
         }
-
-        public void changeReportStatus(string Id, string status)
-        {
-            databaseAccess.changeReportStatus(Id, status);
-            
-        }
-
-        private void loadAllReport()
-        {
-            // loading everyreport in the department
-            // list report = deportment.getreport();
-        }
-
     }
 }

@@ -1,11 +1,40 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="GUI.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="GUI.Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+<!DOCTYPE html>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
 
-    <asp:Login ID="Login1" runat="server">
-    </asp:Login>
+    <link href="BlueConsulting.css" rel="stylesheet" type="text/css" />
 
-</asp:Content>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="top">
+            <table>
+                <tr>
+                    <td>Blue Consulting
+                    </td>
+                </tr>
+            </table>
+            <br />
+        </div>
+
+        <div id="middle">
+
+            <asp:Login ID="Login1" runat="server">
+            </asp:Login>
+        </div>
+
+        <div id="bottom">
+            <asp:Label ID="Label2" runat="server" Text="Date: "></asp:Label>
+            <asp:Label ID="lblDate" runat="server" Text="[Value]"></asp:Label>
+            <br />
+            <br />
+        </div>
+    </form>
+
+</body>
+</html>

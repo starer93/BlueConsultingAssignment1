@@ -14,33 +14,39 @@ namespace GUI.Consultant
 {
     public partial class ShowReport : System.Web.UI.Page
     {
+        Report report;
+        DataTable dataTable;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
-            String reportID = (String)Session["ReportID"];
-            lblSelectedReportID.Text = reportID;
-
-            if (consultant != null)
-            {
-                Report report = consultant.findReport(reportID);
-
-                if (report != null)
-                {
-                    ShowExpensesInReport(report);
-                }
-            }
+            report = (Report)Session["Report"];
+            lblSelectedReportID.Text = report.ReportID;
+            
+            InitData();
+            FillExpense();
         }
 
-        private void ShowExpensesInReport(Report report)
+        private void InitData()
         {
-            txtReportPreview.Text = String.Empty;
-            report.LoadExpensesFromDB();
+            dataTable = new DataTable();
+            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("amount");
+            dataTable.Columns.Add("description");
+            dataTable.Columns.Add("location");
+            dataTable.Columns.Add("currency");
+        }
+
+        private void FillExpense()
+        {
             List<Expense> expenses = report.GetExpenses();
 
             foreach (Expense expense in expenses)
             {
-                txtReportPreview.Text += expense.PrintExpense();
+                dataTable.Rows.Add(expense.ReportID, expense.Amount, expense.Description, expense.Location, expense.Currency);
             }
+
+            listViewExpenses.DataSource = dataTable;
+            listViewExpenses.DataBind();
         }
 
         protected void btnClose_Click(object sender, EventArgs e)
@@ -50,41 +56,17 @@ namespace GUI.Consultant
 
         protected void btnViewReceipt_Click(object sender, EventArgs e)
         {
-            ConsultantLogic consultant = (ConsultantLogic)Session["Consultant"];
-            String reportID = (String)Session["ReportID"];
+            byte[] receipt = report.Receipt;
 
-            string connectionString = ConfigurationManager.ConnectionStrings["LocalSqlServer"].ConnectionString;
-            var connection = new SqlConnection(connectionString);
-
-            connection.Open();
-
-            SqlCommand command = new SqlCommand("SELECT Receipt FROM Reports WHERE Id = @ReportID", connection);
-            command.Parameters.Add("@ReportID", SqlDbType.VarChar).Value = reportID;
-
-            SqlDataReader dr = command.ExecuteReader(System.Data.CommandBehavior.Default);
-
-            String destination = Server.MapPath("~\\Report.pdf");
-
-            if (dr.Read())
+            if (receipt.Length > 0)
             {
-                byte[] receipt = (byte[])dr.GetValue(0);
-
-                FileStream fs = new FileStream(destination, FileMode.Create, FileAccess.ReadWrite);
-
-                BinaryWriter bw = new BinaryWriter(fs);
-
-                bw.Write(receipt);
-                bw.Close();
-
+                Session["Receipt"] = receipt;
+                Response.Write("<script language='javascript'> window.open('../Receipt.aspx'); </script>");
             }
-
-            dr.Close();
-            Response.Redirect("~\\Report.pdf");
-
-
-            //open file from database
+            else
+            {
+                lblReportInformation.Text = "Receipt not available";
+            }
         }
-
-       
     }
 }

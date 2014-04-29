@@ -1,51 +1,73 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="DepartmentSupervisorMainGUI.aspx.cs" Inherits="GUI.DepartmentSupervisor.WebForm1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 195px;
+        }
+
+        .auto-style2 {
+            width: 221px;
+        }
+
+        .auto-style3 {
+            width: 100px;
+        }
+
+        .auto-style5 {
+            width: 117px;
+        }
+
+        .auto-style6 {
+            width: 134px;
+        }
+    </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>
-        Department Supervisor</h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <div id="title">Department Supervisor</div>
+
     <div>
-    
+        <br />
         Welcome,
         <asp:Label ID="lblCurrentUser" runat="server"></asp:Label>
         <br />
-        <br />
-    <table>
+        <h3>Department Information</h3>
+        <table border="1">
             <tr>
-                <td class="auto-style1">
-                    <p>
-                        Department Name:<asp:Label ID="lblDepartmentName" runat="server"></asp:Label>
-                        ||</p>
-                </td>
-                <td class="auto-style1">
-                    <p>
-                    Department Budget:<asp:Label ID="lblTotalBudget" runat="server"></asp:Label> || </p>
-                </td>
-                <td class="auto-style1">
-                    <p>
-                    Remaining Budget: 
-                    <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label> ||</p>
+                <td class="auto-style2">Department Name</td>
+                <td>
+                    <asp:Label ID="lblDepartmentName" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">
-                    <p>
-                    Expenses Approved: 
-                    <asp:Label ID="lblExpensesApproved" runat="server"></asp:Label></p>
+                <td class="auto-style2">Department Budget
                 </td>
-                <td class="auto-style1">
-                    <p>
-                    Number of expenses: 
-                    <asp:Label ID="lblNumberOfExpensesApproved" runat="server"></asp:Label></p>
+                <td>
+                    <asp:Label ID="lblTotalBudget" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Remaining Budget
+                </td>
+                <td>
+                    <asp:Label ID="lblRemainingBudget" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Expense Reports Approved
+                </td>
+                <td>
+                    <asp:Label ID="lblExpensesApproved" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
-        <br />
+        <h3>Reports List</h3>
         <table>
             <tr>
-                <td class="auto-style1">
-                    
-                    <asp:DropDownList ID="ddlMonth" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged">
+                <td class="auto-style3">Select Date: </td>
+                <td class="auto-style6">
+
+                    <asp:DropDownList ID="ddlMonth" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged" Width="133px">
                         <asp:ListItem Value="01">January</asp:ListItem>
                         <asp:ListItem Value="02">February</asp:ListItem>
                         <asp:ListItem Value="03">March</asp:ListItem>
@@ -59,29 +81,30 @@
                         <asp:ListItem Value="11">November</asp:ListItem>
                         <asp:ListItem Value="12">December</asp:ListItem>
                     </asp:DropDownList>
-                    
+
                 </td>
-                <td class="auto-style1">
-                    
-                    <asp:DropDownList ID="ddlYear" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged">
+                <td class="auto-style5">
+
+                    <asp:DropDownList ID="ddlYear" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged" Width="133px" Style="margin-left: 0px">
                         <asp:ListItem>2012</asp:ListItem>
                         <asp:ListItem>2013</asp:ListItem>
                         <asp:ListItem Selected="True">2014</asp:ListItem>
                     </asp:DropDownList>
-                    
+
                 </td>
             </tr>
         </table>
-        <br />
-        <asp:Label ID="lblReportsDescription" runat="server"></asp:Label>
-        <br />
-        
         <table>
+            <tr>
+                <td>
+                    [ReportID, Report Status, Submitted Date]
+                </td>
+            </tr>
             <tr>
                 <td class="auto-style1">
                     <p>
                         <asp:ListBox ID="listBoxReports" runat="server" Height="211px" Width="375px"></asp:ListBox>
-                        </p>
+                    </p>
                 </td>
                 <td class="auto-style1">
                     <asp:RadioButtonList ID="radioButtonReportFilter" runat="server" OnSelectedIndexChanged="radioButtonReportFilter_SelectedIndexChanged" AutoPostBack="True">
@@ -92,7 +115,8 @@
                 </td>
             </tr>
         </table>
-        <br />
-        <asp:Button ID="btnViewReport" runat="server" Text="View Report" OnClick="btnViewReport_Click" />
+        <asp:Button ID="btnViewReport" runat="server" Text="View Report" OnClick="btnViewReport_Click" Height="40px" Width="200px" />
     </div>
+
+
 </asp:Content>

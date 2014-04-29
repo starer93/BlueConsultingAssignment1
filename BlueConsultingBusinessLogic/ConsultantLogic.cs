@@ -27,6 +27,21 @@ namespace BlueConsultingBusinessLogic
             }
         }
 
+        //test constructor
+        public ConsultantLogic(String consultantID, DatabaseAccess databaseAccess)
+        {
+            this.ConsultantID = consultantID;
+            this.databaseAccess = databaseAccess;
+            try
+            {
+                LoadReportsFromDB();
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("An error has occurred: '{1}', :'{0}'", sqlEx, sqlEx.Number);
+            }
+        }
+
         public void LoadReportsFromDB()
         {
             DataTable dataTable = databaseAccess.getReport(ConsultantID);
@@ -37,7 +52,12 @@ namespace BlueConsultingBusinessLogic
                 report.ReportStatus = row["ReportStatus"].ToString();
                 report.Date = row["Date"].ToString();
                 report.ConsultantID = row["ConsultantID"].ToString();
-                report.Receipt = (byte[])row["Receipt"];
+
+                if (row["Receipt"] != DBNull.Value)
+                {
+                    report.Receipt = (byte[])row["Receipt"];
+                }
+
                 reports.Add(report); //add to the list
             }
         }

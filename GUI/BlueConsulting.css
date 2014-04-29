@@ -1,18 +1,29 @@
-﻿#top
-{
+﻿#top {
     background-color: #1a3a4C;
     color: #ffffff;
-    font-size : 30px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
-#middle 
-{
-    background-color: #a8c9e0;
+#middle {
+    background-color: #90abba;
 }
 
-#bottom
-{
+#bottom {
     background-color: #1a3a4C;
     color: #ffffff;
-    font-size : 18px;
+    font-size: 18px;
+    height: 70px;
+}
+
+#title {
+    font-size: 24px;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+#reportinfo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8b0f0f;
 }
